@@ -1,0 +1,7 @@
+{
+    "scripts": [
+        "create path (sling:OrderedFolder) /content/dam/invesco_ai",
+        "create path (nt:unstructured) /content/dam/invesco_ai/jcr:content",
+        "set properties on /content/dam/invesco_ai/jcr:content\n  set cq:conf{String} to /conf/invesco_ai\n  set jcr:title{String} to \"Invesco AI\"\nend"
+    ]
+}
