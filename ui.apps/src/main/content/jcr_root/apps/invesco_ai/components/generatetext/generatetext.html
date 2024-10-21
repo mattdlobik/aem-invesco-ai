@@ -1,0 +1,36 @@
+<div class="generate-text-component">
+    <h1>Create/Edit prompt</h1>
+
+    <form id="generate-text-form">
+        <div>
+            <label for="name">Name *</label>
+            <input type="text" id="name" name="name" required placeholder="Name"/>
+        </div>
+
+        <div>
+            <label for="description">Description</label>
+            <input type="text" id="description" name="description" placeholder="Description"/>
+        </div>
+
+        <div>
+            <label for="promptTemplate">Prompt template</label>
+            <textarea id="promptTemplate" name="promptTemplate" rows="5" placeholder="Prompt template"></textarea>
+            <p>Note: You can use <code>\${variableName}</code> syntax to add variables to the prompt.</p>
+        </div>
+
+        <div>
+            <label for="fundTicker">Fund Ticker</label>
+            <input type="text" id="fundTicker" name="fundTicker" placeholder="Fund Ticker"/>
+        </div>
+
+        <div>
+            <label for="data">Fund Data</label>
+            <textarea id="data" name="data" rows="3" placeholder="Data"></textarea>
+        </div>
+
+        <h2>Preview</h2>
+        <pre id="previewArea"></pre>
+
+        <button type="button" id="testPromptButton">Test prompt</button>
+    </form>
+</div>
