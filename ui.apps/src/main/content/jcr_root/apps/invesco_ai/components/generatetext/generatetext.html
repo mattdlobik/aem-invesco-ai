@@ -1,36 +1,54 @@
-<div class="generate-text-component">
-    <h1>Create/Edit prompt</h1>
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+    <sly data-sly-call="${clientlib.css @ categories='invesco-ai.generatetext'}"></sly>
+</sly>
 
-    <form id="generate-text-form">
-        <div>
-            <label for="name">Name *</label>
-            <input type="text" id="name" name="name" required placeholder="Name"/>
+
+<div class="generate-text" role="main">
+    <h1 class="generate-text__title">Create/Edit Prompt</h1>
+
+    <form id="generate-text-form" class="generate-text__form" aria-label="Prompt generation form">
+        <div class="form-group">
+            <label class="form-group__label" for="name">Name *</label>
+            <input class="form-group__input" type="text" id="name" name="name" required placeholder="Name" aria-required="true"/>
         </div>
 
-        <div>
-            <label for="description">Description</label>
-            <input type="text" id="description" name="description" placeholder="Description"/>
+        <div class="form-group">
+            <label class="form-group__label" for="description">Description</label>
+            <input class="form-group__input" type="text" id="description" name="description" placeholder="Description"/>
         </div>
 
-        <div>
-            <label for="promptTemplate">Prompt template</label>
-            <textarea id="promptTemplate" name="promptTemplate" rows="5" placeholder="Prompt template"></textarea>
-            <p>Note: You can use <code>\${variableName}</code> syntax to add variables to the prompt.</p>
+        <div class="form-group">
+            <label class="form-group__label" for="promptTemplate">Prompt template</label>
+            <textarea class="form-group__textarea" id="promptTemplate" name="promptTemplate" rows="5" placeholder="Prompt template" aria-required="true"></textarea>
+            <p class="form-group__hint">Note: You can use <code class="form-group__code">\${variableName}</code> syntax to add variables to the prompt.</p>
         </div>
 
-        <div>
-            <label for="fundTicker">Fund Ticker</label>
-            <input type="text" id="fundTicker" name="fundTicker" placeholder="Fund Ticker"/>
+        <div class="form-group">
+            <label class="form-group__label" for="fundTicker">Fund Ticker</label>
+            <input class="form-group__input" type="text" id="fundTicker" name="fundTicker" placeholder="Fund Ticker"/>
         </div>
 
-        <div>
-            <label for="data">Fund Data</label>
-            <textarea id="data" name="data" rows="3" placeholder="Data"></textarea>
+        <div class="form-group">
+            <label class="form-group__label" for="data">Data</label>
+            <textarea class="form-group__textarea" id="data" name="data" rows="3" placeholder="Data"></textarea>
         </div>
 
-        <h2>Preview</h2>
-        <pre id="previewArea"></pre>
+        <div class="preview-section" role="region" aria-live="polite">
+            <h2 class="preview-section__title">Preview</h2>
+            <pre id="previewArea" class="preview-section__content" aria-label="Prompt preview"></pre>
+        </div>
 
-        <button type="button" id="testPromptButton">Test prompt</button>
+        <button type="button" id="testPromptButton" class="generate-text__button" aria-controls="generatedResponse">
+            Test prompt
+        </button>
+
+        <div class="response-section" role="region" aria-live="polite">
+            <h2 class="response-section__title">Generated Response</h2>
+            <pre id="generatedResponse" class="response-section__content" aria-label="Generated response"></pre>
+        </div>
     </form>
 </div>
+
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+    <sly data-sly-call="${clientlib.js @ categories='invesco-ai.generatetext'}"></sly>
+</sly>

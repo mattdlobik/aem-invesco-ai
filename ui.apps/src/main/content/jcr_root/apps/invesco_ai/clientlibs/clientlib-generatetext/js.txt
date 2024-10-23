@@ -1,1 +1,2 @@
-js/generatetext.js
+#base=js
+generatetext.js
