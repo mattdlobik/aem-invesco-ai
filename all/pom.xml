@@ -77,6 +77,12 @@
                             <type>zip</type>
                             <target>/apps/invesco_ai-packages/application/install</target>
                         </embedded>
+                        <embedded>
+                            <groupId>com.github.spullara.mustache.java</groupId>
+                            <artifactId>compiler</artifactId>
+                            <type>pom</type>
+                            <target>/apps/invesco_ai-packages/application/install</target>
+                        </embedded>
                     </embeddeds>
                 </configuration>
             </plugin>

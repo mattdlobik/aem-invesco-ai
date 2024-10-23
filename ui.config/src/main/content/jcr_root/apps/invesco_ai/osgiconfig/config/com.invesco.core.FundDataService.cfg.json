@@ -1,0 +1,4 @@
+{
+  "endpoint": "https://www.invesco.com/us/financial-products/etfs/product-detail/main/performance/0?audienceType=Investor&action=getPerformance",
+  "timeout": 5
+}

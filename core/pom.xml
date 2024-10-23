@@ -44,6 +44,7 @@
                         <configuration>
                             <bnd><![CDATA[
 Import-Package: javax.annotation;version=0.0.0,*
+-includeresource: compiler-[0-9.]*.jar;lib:=true
                                 ]]></bnd>
                         </configuration>
                     </execution>
@@ -95,7 +96,11 @@ Import-Package: javax.annotation;version=0.0.0,*
             <artifactId>core.wcm.components.core</artifactId>
             <scope>test</scope>
         </dependency>
-
+        <dependency>
+            <groupId>com.github.spullara.mustache.java</groupId>
+            <artifactId>compiler</artifactId>
+            <version>0.9.14</version>
+        </dependency>
 
         <!-- Testing -->
         <dependency>

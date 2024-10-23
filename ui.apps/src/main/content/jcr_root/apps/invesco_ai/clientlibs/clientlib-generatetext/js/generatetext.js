@@ -121,6 +121,7 @@ const generateText = async () => {
         formData.append('prompt', formatPrompt(template, ticker, performanceData));
         formData.append('_charset_', 'utf-8');
         formData.append(':operation', 'generate');
+        debugger;
 
         const response = await fetch(API_ENDPOINT, {
             method: 'POST',

@@ -14,25 +14,23 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
 
-import static org.apache.sling.api.servlets.HttpConstants.HEADER_ACCEPT;
-
 @Component(service = OpenAiService.class, immediate = true)
-@Designate(ocd = OpenAiConfiguration.class)
+@Designate(ocd = OpenAiConfig.class)
 public class OpenAiService {
 
     static final String COMPLETIONS_ENDPOINT = "https://api.openai.com/v1/chat/completions";
     static final String MODEL = "gpt-4o-mini";
-    static ObjectMapper jackson = new ObjectMapper();
+    static final ObjectMapper jackson = new ObjectMapper();
 
-    OpenAiConfiguration config;
+    OpenAiConfig config;
 
     @Activate
-    protected void activate(OpenAiConfiguration config) {
+    protected void activate(OpenAiConfig config) {
         this.config = config;
     }
 
-    ChatGptResponse completion(String prompt, JsonNode data) {
-        prompt = prompt.concat("\ndata: " + data.toPrettyString());
+    ChatGptResponse completion(String prompt) {
+//        prompt = prompt.concat("\ndata: " + data.toPrettyString());
         ChatGptRequest gptRequest = new ChatGptRequest(prompt, MODEL, "user");
 
         ChatGptResponse gptResponse = null;
@@ -51,7 +49,6 @@ public class OpenAiService {
             HttpClient client = HttpClient.newBuilder().build();
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
-            ObjectMapper jackson = new ObjectMapper();
             gptResponse = jackson.readValue(response.body(), ChatGptResponse.class);
 
         } catch (URISyntaxException e) {
