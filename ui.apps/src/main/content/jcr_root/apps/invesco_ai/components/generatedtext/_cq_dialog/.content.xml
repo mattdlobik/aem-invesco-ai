@@ -1,45 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jcr:root
-    xmlns:jcr="http://www.jcp.org/jcr/1.0"
-    xmlns:cq="http://www.day.com/jcr/cq/1.0"
-    xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
-    xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
-    jcr:primaryType="cq:Dialog"
-    jcr:title="Generate Text Dialog"
-    cq:dialogMode="floating">
-
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+          xmlns:cq="http://www.day.com/jcr/cq/1.0"
+          xmlns:jcr="http://www.jcp.org/jcr/1.0"
+          xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+          xmlns:granite="http://www.adobe.com/jcr/granite/1.0"
+          jcr:primaryType="nt:unstructured"
+          jcr:title="Generate Text"
+          sling:resourceType="cq/gui/components/authoring/dialog">
     <content
         jcr:primaryType="nt:unstructured"
-        sling:resourceType="cq/gui/components/authoring/dialog">
-
-        <items jcr:primaryType="cq:TabPanel">
-            <items jcr:primaryType="cq:WidgetCollection">
-
-                <basic
-                    jcr:primaryType="nt:unstructured"
-                    sling:resourceType="granite/ui/components/coral/foundation/container">
-
-                    <items jcr:primaryType="nt:unstructured">
-                        <promptTemplate
-                            jcr:primaryType="nt:unstructured"
-                            sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
-                            fieldLabel="Prompt Template"
-                            name="./promptTemplate"
-                            description="Use ${variableName} syntax to add variables"
-                            required="{Boolean}true"
-                            rows="5"/>
-
-                        <fund
-                            jcr:primaryType="nt:unstructured"
-                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                            fieldLabel="Fund"
-                            name="./fund"
-                            required="{Boolean}true"/>
-
-                    </items>
-                </basic>
-
-            </items>
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <prompt
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                fieldLabel="Prompt"
+                name="./prompt"
+                required="{Boolean}true"/>
+            <fundTicker
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                fieldLabel="Fund Ticker"
+                name="./fundTicker"
+                required="{Boolean}true"/>
+            <generateButton
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/button"
+                text="Generate Text"
+                variant="primary"
+                class="generate-text-button"/>
         </items>
     </content>
 </jcr:root>
