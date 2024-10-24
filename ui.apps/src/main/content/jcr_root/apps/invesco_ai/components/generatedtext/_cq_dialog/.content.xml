@@ -11,11 +11,11 @@
         jcr:primaryType="nt:unstructured"
         sling:resourceType="granite/ui/components/coral/foundation/container">
         <items jcr:primaryType="nt:unstructured">
-            <prompt
+            <promptTemplate
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
-                fieldLabel="Prompt"
-                name="./prompt"
+                fieldLabel="Prompt Template"
+                name="./promptTemplate"
                 required="{Boolean}true"/>
             <fundTicker
                 jcr:primaryType="nt:unstructured"
