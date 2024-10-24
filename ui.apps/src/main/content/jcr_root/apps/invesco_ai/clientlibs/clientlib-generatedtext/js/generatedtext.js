@@ -1,3 +1,5 @@
+console.log('test');
+
 (function($, Coral) {
     "use strict";
 
@@ -34,6 +36,7 @@
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(requestBody),
+
             })
                 .then(response => response.json())
                 .then(data => {
