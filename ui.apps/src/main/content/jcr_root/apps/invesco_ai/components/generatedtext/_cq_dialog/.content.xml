@@ -6,29 +6,33 @@
           xmlns:granite="http://www.adobe.com/jcr/granite/1.0"
           jcr:primaryType="nt:unstructured"
           jcr:title="Generate Text"
-          sling:resourceType="cq/gui/components/authoring/dialog">
+          sling:resourceType="cq/gui/components/authoring/dialog"
+          componentId="text-generator">
     <content
         jcr:primaryType="nt:unstructured"
-        sling:resourceType="granite/ui/components/coral/foundation/container">
+        sling:resourceType="granite/ui/components/coral/foundation/container"
+        granite:class="text-generator-container">
         <items jcr:primaryType="nt:unstructured">
             <promptTemplate
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
                 fieldLabel="Prompt Template"
                 name="./promptTemplate"
-                required="{Boolean}true"/>
+                required="{Boolean}true"
+                granite:class="text-generator-prompt"/>
             <fundTicker
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                 fieldLabel="Fund Ticker"
                 name="./fundTicker"
-                required="{Boolean}true"/>
+                required="{Boolean}true"
+                granite:class="text-generator-ticker"/>
             <generateButton
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="granite/ui/components/coral/foundation/button"
                 text="Generate Text"
                 variant="primary"
-                granite:class="generate-text-button"/>
+                granite:class="text-generator-button"/>
         </items>
     </content>
 </jcr:root>

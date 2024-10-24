@@ -4,4 +4,5 @@
           jcr:description="A component for generating text dynamically"
           componentGroup="Invesco AI - Content"
           sling:resourceSuperType="core/wcm/components/text/v2/text"
-          categories="[invesco.ai.generatedtext]"/>
+          categories="[invesco.ai.generatedtext]"
+          data-component-type="text-generator"/>

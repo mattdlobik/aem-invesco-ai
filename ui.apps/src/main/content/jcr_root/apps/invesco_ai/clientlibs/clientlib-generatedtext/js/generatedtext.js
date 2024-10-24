@@ -1,89 +1,51 @@
-$(document).on("click", ".generate-text-button", function () {
-    alert("Hi"); // Rest of the code will go here
-});
+(function() {
+    "use strict";
 
-// (function ($, $document) {
-//     $(document).on("click", ".generate-text-button", function () {
-//         alert("Hi"); // Rest of the code will go here
-//     });
-// })($, $(document));
+    // Listen for multiple dialog events
+    $(document).on('coral-overlay:open dialog-ready foundation-contentloaded foundation-form-loaded', function(e) {
+        console.log('Event triggered:', e.type);
 
-// (function(document, $) {
-//     "use strict";
-//     $(document).on("foundation-contentloaded", function(e) {
-//         console.log("dialog loaded");
-//     });
-//
-//     $(document).on("change", ".nutri-info-dropdown", function(e) {
-//         // var item = $(".nutri-info-dropdown").val(); // This works
-//     });
-// })(document, Granite.$);
+        let button = document.querySelector('.text-generator-button');
+        if (button) {
+            // Remove any existing click handlers
+            // button.removeEventListener('click', handleClick);
 
-// console.log('test');
-//
-// (function($) {
-//     "use strict";
-//
-//     $(document).on('dialog-ready', function() {
-//         console.log("Dialog loaded");
-//
-//         $(document).on('click', '.generate-text-button', function(e) {
-//             console.log("Button clicked");
-//             e.preventDefault();
-//
-//             const dialog = $(this).closest('coral-dialog');
-//             const prompt = dialog.find('textarea[name="./promptTemplate"]').val();
-//             const fundTicker = dialog.find('input[name="./fundTicker"]').val();
-//             const responseField = dialog.find('input[name="./generatedResponse"]');
-//             const responseContainer = $('.cmp-generated-text__response');
-//
-//             if (!prompt || !fundTicker) {
-//                 alert('Please fill in both the prompt and the fund ticker');
-//                 return;
-//             }
-//
-//             const $button = $(this);
-//             $button.prop('disabled', true);
-//             $button.text('Generating...');
-//
-//             const requestBody = {
-//                 prompt: prompt,
-//                 fundTicker: fundTicker
-//             };
-//
-//             fetch('/bin/openai', {
-//                 method: 'POST',
-//                 headers: {
-//                     'Content-Type': 'application/json',
-//                 },
-//                 body: JSON.stringify(requestBody),
-//
-//             })
-//                 .then(response => response.json())
-//                 .then(data => {
-//                     if (data.generatedText) {
-//                         responseField.val(data.generatedText);
-//                         responseContainer.html(data.generatedText);
-//                         var ui = $(window).adaptTo("foundation-ui");
-//                         ui.notify("Success", "Text generated successfully", "success");
-//                         dialog.trigger('foundation-field-change');
-//                         $('.cmp-generated-text__placeholder').hide();
-//                         $('.cmp-generated-text__awaiting').hide();
-//                         responseContainer.show();
-//                     } else {
-//                         var ui = $(window).adaptTo("foundation-ui");
-//                         ui.notify("Error", "No response generated", "error");
-//                     }
-//                     $button.prop('disabled', false);
-//                     $button.text('Generate Text');
-//                 })
-//                 .catch(error => {
-//                     console.error('Error generating text:', error);
-//                     var ui = $(window).adaptTo("foundation-ui");
-//                     ui.notify("Error", "Failed to generate text", "error");
-//                     $button.prop('disabled', false);
-//                     $button.text('Generate Text');
-//                 });
-//         });
-//     });
-// })(jQuery, Coral);
+            // Add click handler
+            button.addEventListener('click', handleClick);
+        // } else {
+        //     console.log('Button not found');
+        }
+    });
+
+    function handleClick(e) {
+        e.preventDefault();
+        console.log('Button clicked');
+
+        let form = e.target.closest('form');
+        let promptTemplate = form.querySelector('.text-generator-prompt').value;
+        let fundTicker = form.querySelector('.text-generator-ticker').value;
+
+        console.log('Values:', { promptTemplate, fundTicker });
+
+        // Fetch to backend
+        fetch('/bin/openai', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Basic YWRtaW46YWRtaW4='
+            },
+            body: JSON.stringify({
+                prompt: promptTemplate,
+                fund: fundTicker
+            })
+        })
+            .then(response => {
+                alert('Successfully hit backend!');
+                console.log('Backend response:', response);
+            })
+            .catch(error => {
+                alert('Failed to hit backend');
+                console.error('Error:', error);
+            });
+    }
+})();

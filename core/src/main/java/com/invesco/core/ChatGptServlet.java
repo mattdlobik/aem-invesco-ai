@@ -22,7 +22,7 @@ import java.util.Map;
 @Component(immediate = true, service = Servlet.class, property = {
         Constants.SERVICE_DESCRIPTION + "=ChatGPT Integration",
         "sling.servlet.methods=" + HttpConstants.METHOD_POST,
-        "sling.servlet.paths=" + "/bin/openai"
+        "sling.servlet.paths=" + "/bin/openai",
 })
 public class ChatGptServlet extends SlingAllMethodsServlet {
 
