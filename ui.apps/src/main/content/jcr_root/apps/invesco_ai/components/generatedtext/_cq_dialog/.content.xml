@@ -29,6 +29,10 @@
                 text="Generate Text"
                 variant="primary"
                 class="generate-text-button"/>
+            <generatedResponse
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/form/hidden"
+                name="./generatedResponse"/>
         </items>
     </content>
 </jcr:root>
