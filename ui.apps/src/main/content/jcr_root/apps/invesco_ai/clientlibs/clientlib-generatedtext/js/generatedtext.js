@@ -22,8 +22,9 @@
         console.log('Button clicked');
 
         let form = e.target.closest('form');
-        let promptTemplate = form.querySelector('.text-generator-prompt').value;
-        let fundTicker = form.querySelector('.text-generator-ticker').value;
+        let text = form.querySelector('[name="./text"]')
+        let promptTemplate = form.querySelector('[name="./promptTemplate"]').value;
+        let fundTicker = form.querySelector('[name="./fundTicker"]').value;
 
         console.log('Values:', { promptTemplate, fundTicker });
 
@@ -31,17 +32,17 @@
         fetch('/bin/openai', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'Basic YWRtaW46YWRtaW4='
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify({
                 prompt: promptTemplate,
                 fund: fundTicker
             })
         })
-            .then(response => {
-                alert('Successfully hit backend!');
-                console.log('Backend response:', response);
+            .then(response => response.text())
+            .then((body) => {
+                console.log('Backend response:', body);
+                text.value = body;
             })
             .catch(error => {
                 alert('Failed to hit backend');
