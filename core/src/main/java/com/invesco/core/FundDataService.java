@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
+import org.osgi.service.metatype.annotations.AttributeDefinition;
 import org.osgi.service.metatype.annotations.Designate;
 import org.osgi.service.metatype.annotations.ObjectClassDefinition;
 import java.io.IOException;
@@ -66,8 +67,11 @@ public class FundDataService {
     }
 
     @ObjectClassDefinition(name = "Fund Data Service Configuration")
-    public static @interface Config {
+    public @interface Config {
+        @AttributeDefinition(name = "API Endpoint")
         String endpoint();
-        int timeout() default 10;
+
+        @AttributeDefinition(name = "Timeout (milliseconds)")
+        int timeout() default 1000;
     }
 }

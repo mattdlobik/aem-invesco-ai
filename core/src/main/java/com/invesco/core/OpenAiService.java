@@ -33,7 +33,7 @@ public class OpenAiService {
     ChatGptResponse completion(String prompt) {
         ChatGptRequest gptRequest = new ChatGptRequest(prompt, MODEL, "user");
 
-        ChatGptResponse gptResponse = null;
+        ChatGptResponse gptResponse;
         try {
             String body = jackson.writeValueAsString(gptRequest);
 
@@ -66,14 +66,14 @@ public class OpenAiService {
     }
 
     @ObjectClassDefinition(name = "OpenAI Service Configuration")
-    public static @interface Config {
+    public @interface Config {
         @AttributeDefinition(name = "API Key")
         String apiKey();
 
-        @AttributeDefinition(name = "Organization")
+        @AttributeDefinition(name = "Organization Key")
         String organization();
 
-        @AttributeDefinition(name = "Timeout")
+        @AttributeDefinition(name = "Timeout (milliseconds)")
         int timeout() default 10;
     }
 }

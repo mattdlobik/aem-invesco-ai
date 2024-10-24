@@ -43,7 +43,7 @@ public class ChatGptServlet extends SlingAllMethodsServlet {
 
         JsonNode data = fundData.fundData(submission.getFund());
 
-        Map<String, Object> tokens = Map.of("fund", submission.getFund(), "data", data.toPrettyString());
+        Map<String, Object> tokens = Map.of("fund", submission.getFund(), "data", data.toString());
         Mustache mustache = mf.compile(new StringReader(submission.getPrompt()), null);
 
         StringWriter writer = new StringWriter();
