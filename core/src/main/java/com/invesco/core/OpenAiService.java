@@ -1,11 +1,12 @@
 package com.invesco.core;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
+import org.osgi.service.metatype.annotations.AttributeDefinition;
 import org.osgi.service.metatype.annotations.Designate;
+import org.osgi.service.metatype.annotations.ObjectClassDefinition;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -15,22 +16,21 @@ import java.net.http.HttpResponse;
 import java.time.Duration;
 
 @Component(service = OpenAiService.class, immediate = true)
-@Designate(ocd = OpenAiConfig.class)
+@Designate(ocd = OpenAiService.Config.class)
 public class OpenAiService {
 
     static final String COMPLETIONS_ENDPOINT = "https://api.openai.com/v1/chat/completions";
     static final String MODEL = "gpt-4o-mini";
     static final ObjectMapper jackson = new ObjectMapper();
 
-    OpenAiConfig config;
+    Config config;
 
     @Activate
-    protected void activate(OpenAiConfig config) {
+    protected void activate(Config config) {
         this.config = config;
     }
 
     ChatGptResponse completion(String prompt) {
-//        prompt = prompt.concat("\ndata: " + data.toPrettyString());
         ChatGptRequest gptRequest = new ChatGptRequest(prompt, MODEL, "user");
 
         ChatGptResponse gptResponse = null;
@@ -44,7 +44,8 @@ public class OpenAiService {
                     .setHeader("Authorization", "Bearer " + config.apiKey())
                     .setHeader("OpenAI-Organization", config.organization())
                     .POST(HttpRequest.BodyPublishers.ofString(body))
-                    .timeout(Duration.ofSeconds(config.timeout())).build();
+                    .timeout(Duration.ofSeconds(config.timeout()))
+                    .build();
 
             HttpClient client = HttpClient.newBuilder().build();
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
@@ -64,4 +65,15 @@ public class OpenAiService {
         return gptResponse;
     }
 
+    @ObjectClassDefinition(name = "OpenAI Service Configuration")
+    public static @interface Config {
+        @AttributeDefinition(name = "API Key")
+        String apiKey();
+
+        @AttributeDefinition(name = "Organization")
+        String organization();
+
+        @AttributeDefinition(name = "Timeout")
+        int timeout() default 10;
+    }
 }

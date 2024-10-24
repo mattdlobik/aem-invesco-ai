@@ -26,34 +26,33 @@ import java.util.Map;
 })
 public class ChatGptServlet extends SlingAllMethodsServlet {
 
+    private static final MustacheFactory mf = new DefaultMustacheFactory();
+    private static final ObjectMapper jackson = new ObjectMapper();
+
     @Reference
     private transient OpenAiService openAi;
 
     @Reference
     private transient FundDataService fundData;
 
-    private static final MustacheFactory mf = new DefaultMustacheFactory();
-    private static final ObjectMapper jackson = new ObjectMapper();
-
     @Override
     protected void doPost(SlingHttpServletRequest request, SlingHttpServletResponse response)
             throws IOException {
 
         Submission submission = jackson.readValue(request.getReader(), Submission.class);
-        JsonNode data = fundData.fundData(submission.getFund());
-        Map<String, Object> tokens = Map.of("fund", submission.getFund(), "data", data.toPrettyString());
 
+        JsonNode data = fundData.fundData(submission.getFund());
+
+        Map<String, Object> tokens = Map.of("fund", submission.getFund(), "data", data.toPrettyString());
         Mustache mustache = mf.compile(new StringReader(submission.getPrompt()), null);
+
         StringWriter writer = new StringWriter();
         mustache.execute(writer, tokens);
 
-//        InputStream is = getClass().getClassLoader().getResourceAsStream("data.json");
-//        JsonNode data  = jackson.readTree(is);
-
         ChatGptResponse gptResponse = openAi.completion(writer.toString());
-        response.addHeader("Content-Type", "text/plain");
-
         String responseContent = gptResponse.getChoices().get(0).getMessage().getContent();
+
+        response.addHeader("Content-Type", "text/plain");
         response.getWriter().write(responseContent);
 
     }
