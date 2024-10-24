@@ -44,6 +44,7 @@
                         <configuration>
                             <bnd><![CDATA[
 Import-Package: javax.annotation;version=0.0.0,*
+Export-Package: com.invesco.core.*
 -includeresource: compiler-[0-9.]*.jar;lib:=true
                                 ]]></bnd>
                         </configuration>
