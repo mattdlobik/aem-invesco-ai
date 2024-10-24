@@ -67,10 +67,10 @@ public class OpenAiService {
 
     @ObjectClassDefinition(name = "OpenAI Service Configuration")
     public @interface Config {
-        @AttributeDefinition(name = "API Key")
+        @AttributeDefinition(name = "OPENAI API KEY")
         String apiKey();
 
-        @AttributeDefinition(name = "Organization Key")
+        @AttributeDefinition(name = "Organization")
         String organization();
 
         @AttributeDefinition(name = "Timeout (milliseconds)")

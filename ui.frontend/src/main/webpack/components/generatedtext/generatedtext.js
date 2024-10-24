@@ -20,7 +20,6 @@
     function handleClick(e) {
         e.preventDefault();
         console.log('Button clicked');
-
         let form = e.target.closest('form');
         let text = form.querySelector('[name="./text"]')
         let promptTemplate = form.querySelector('[name="./promptTemplate"]').value;
