@@ -1,68 +1,52 @@
-console.log('test');
-
-(function($, Coral) {
+(function() {
     "use strict";
 
-    $(document).on('foundation-contentloaded', function() {
-        console.log("Dialog loaded");
+    // Listen for multiple dialog events
+    $(document).on('coral-overlay:open dialog-ready foundation-contentloaded foundation-form-loaded', function(e) {
+        console.log('Event triggered:', e.type);
 
-        $(document).on('click', '.generate-text-button', function(e) {
-            console.log("Button clicked");
-            e.preventDefault();
+        var button = document.querySelector('.text-generator-button.generate-text-button');
+        if (button) {
+            console.log('Found generate button');
 
-            const dialog = $(this).closest('coral-dialog');
-            const prompt = dialog.find('textarea[name="./promptTemplate"]').val();
-            const fundTicker = dialog.find('input[name="./fundTicker"]').val();
-            const responseField = dialog.find('input[name="./generatedResponse"]');
-            const responseContainer = $('.cmp-generated-text__response');
+            // Remove any existing click handlers
+            button.removeEventListener('click', handleClick);
 
-            if (!prompt || !fundTicker) {
-                alert('Please fill in both the prompt and the fund ticker');
-                return;
-            }
-
-            const $button = $(this);
-            $button.prop('disabled', true);
-            $button.text('Generating...');
-
-            const requestBody = {
-                prompt: prompt,
-                fundTicker: fundTicker
-            };
-
-            fetch('/bin/openai', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(requestBody),
-
-            })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.generatedText) {
-                        responseField.val(data.generatedText);
-                        responseContainer.html(data.generatedText);
-                        var ui = $(window).adaptTo("foundation-ui");
-                        ui.notify("Success", "Text generated successfully", "success");
-                        dialog.trigger('foundation-field-change');
-                        $('.cmp-generated-text__placeholder').hide();
-                        $('.cmp-generated-text__awaiting').hide();
-                        responseContainer.show();
-                    } else {
-                        var ui = $(window).adaptTo("foundation-ui");
-                        ui.notify("Error", "No response generated", "error");
-                    }
-                    $button.prop('disabled', false);
-                    $button.text('Generate Text');
-                })
-                .catch(error => {
-                    console.error('Error generating text:', error);
-                    var ui = $(window).adaptTo("foundation-ui");
-                    ui.notify("Error", "Failed to generate text", "error");
-                    $button.prop('disabled', false);
-                    $button.text('Generate Text');
-                });
-        });
+            // Add click handler
+            button.addEventListener('click', handleClick);
+        } else {
+            console.log('Button not found');
+        }
     });
-})(jQuery, Coral);
+
+    function handleClick(e) {
+        e.preventDefault();
+        console.log('Button clicked');
+
+        var form = e.target.closest('form');
+        var promptTemplate = form.querySelector('.text-generator-prompt').value;
+        var fundTicker = form.querySelector('.text-generator-ticker').value;
+
+        console.log('Values:', { promptTemplate, fundTicker });
+
+        // Fetch to backend
+        fetch('/bin/openai', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                prompt: promptTemplate,
+                fund: fundTicker
+            })
+        })
+            .then(response => {
+                alert('Successfully hit backend!');
+                console.log('Backend response:', response);
+            })
+            .catch(error => {
+                alert('Failed to hit backend');
+                console.error('Error:', error);
+            });
+    }
+})();

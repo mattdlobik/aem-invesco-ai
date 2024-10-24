@@ -67,7 +67,7 @@ public class OpenAiService {
 
     @ObjectClassDefinition(name = "OpenAI Service Configuration")
     public static @interface Config {
-        @AttributeDefinition(name = "API Key")
+        @AttributeDefinition(name = "OPEN AI KEY")
         String apiKey();
 
         @AttributeDefinition(name = "Organization")
