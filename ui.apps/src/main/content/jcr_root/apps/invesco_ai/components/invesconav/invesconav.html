@@ -1,0 +1,22 @@
+<div class="invesco-nav">
+    <!-- Logo Section -->
+    <div class="logo">
+        <img src="${properties.logoImage @ context='uri'}" alt="Invesco QQQ Logo" class="logo-img" />
+        <span>Invesco QQQ</span>
+    </div>
+
+    <!-- Navigation Links -->
+    <div class="nav-links">
+        <ul>
+            <li data-sly-list.link="${properties.links}">
+                <a href="${link.url}">${link.text}</a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Action Button -->
+    <div class="nav-button">
+        <a href="${properties.buttonURL}" class="btn btn-primary">${properties.buttonText}</a>
+    </div>
+</div>
+

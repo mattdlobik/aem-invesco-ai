@@ -1,0 +1,29 @@
+<div class="two-column-component">
+    <!-- Column 1 -->
+    <div class="row">
+        <div class="col-md-6">
+            <!-- Text Content -->
+            <div class="text-content" data-sly-test="${properties.text1}">
+                ${properties.text1 @ context='html'}
+            </div>
+
+            <!-- Image Content -->
+            <div class="image-content" data-sly-test="${properties.fileReference1}">
+                <img src="${properties.fileReference1 @ context='uri'}" alt="${properties.alt1}" class="img-fluid"/>
+            </div>
+        </div>
+
+        <!-- Column 2 -->
+        <div class="col-md-6">
+            <!-- Text Content -->
+            <div class="text-content" data-sly-test="${properties.text2}">
+                ${properties.text2 @ context='html'}
+            </div>
+
+            <!-- Image Content -->
+            <div class="image-content-bike" data-sly-test="${properties.fileReference2}">
+                <img src="${properties.fileReference2 @ context='uri'}" alt="${properties.alt2}" class="img-fluid"/>
+            </div>
+        </div>
+    </div>
+</div>

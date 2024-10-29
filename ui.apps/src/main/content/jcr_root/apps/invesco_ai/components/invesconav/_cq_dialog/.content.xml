@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root
+    xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+    xmlns:cq="http://www.day.com/jcr/cq/1.0"
+    xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="cq:Dialog"
+    jcr:title="InvescoNav Configuration">
+
+    <content jcr:primaryType="nt:unstructured" sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs jcr:primaryType="nt:unstructured" sling:resourceType="granite/ui/components/coral/foundation/tabs">
+                <items jcr:primaryType="nt:unstructured">
+
+                    <!-- Logo Tab -->
+                    <logoTab jcr:primaryType="nt:unstructured" jcr:title="Logo" sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <logoImage
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                fieldLabel="Logo Image"
+                                name="./logoImage"
+                                mimeTypes="[image/png,image/jpeg,image/gif]"
+                                allowUpload="{Boolean}true"/>
+                        </items>
+                    </logoTab>
+
+                    <!-- Links Tab -->
+                    <linksTab jcr:primaryType="nt:unstructured" jcr:title="Navigation Links" sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <links jcr:primaryType="nt:unstructured" sling:resourceType="granite/ui/components/coral/foundation/form/multifield" composite="{Boolean}true" fieldLabel="Navigation Links">
+                                <field jcr:primaryType="nt:unstructured" sling:resourceType="granite/ui/components/coral/foundation/form/fieldset">
+                                    <items jcr:primaryType="nt:unstructured">
+                                        <linkText jcr:primaryType="nt:unstructured" sling:resourceType="granite/ui/components/coral/foundation/form/textfield" fieldLabel="Link Text" name="./text"/>
+                                        <linkURL jcr:primaryType="nt:unstructured" sling:resourceType="granite/ui/components/coral/foundation/form/pathfield" fieldLabel="Link URL" name="./url"/>
+                                    </items>
+                                </field>
+                            </links>
+                        </items>
+                    </linksTab>
+
+                    <!-- Button Tab -->
+                    <buttonTab jcr:primaryType="nt:unstructured" jcr:title="Button" sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <buttonText jcr:primaryType="nt:unstructured" sling:resourceType="granite/ui/components/coral/foundation/form/textfield" fieldLabel="Button Text" name="./buttonText"/>
+                            <buttonURL jcr:primaryType="nt:unstructured" sling:resourceType="granite/ui/components/coral/foundation/form/pathfield" fieldLabel="Button URL" name="./buttonURL"/>
+                        </items>
+                    </buttonTab>
+
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>
