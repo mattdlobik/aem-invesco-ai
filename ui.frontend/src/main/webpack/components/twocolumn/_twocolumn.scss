@@ -1,0 +1,64 @@
+.two-column-component {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 20px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  font-family: 'Montserrat', sans-serif;
+  width: 100% !important;
+}
+
+.two-column-component .col-md-6 {
+  flex: 0 0 calc(50% - 20px) !important;
+  max-width: calc(50% - 20px) !important;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+  margin: 0 !important;
+}
+
+
+.two-column-component .col-md-6:first-child::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: -10px;
+  width: 1px;
+  height: 100%;
+  background-color: #ddd;
+}
+
+.text-content {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 15px;
+  line-height: 1.6;
+}
+
+.image-content img,
+.image-content-bike img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .two-column-component {
+    flex-direction: column !important;
+    gap: 10px;
+  }
+
+  .two-column-component .col-md-6 {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+  }
+
+  .two-column-component .col-md-6:first-child::after {
+    display: none;
+  }
+}
