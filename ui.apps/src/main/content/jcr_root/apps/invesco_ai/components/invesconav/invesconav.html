@@ -1,14 +1,16 @@
-<div class="invesco-nav">
-    <!-- Logo Section -->
+<div data-sly-use.nav="com.invesco.core.models.NavigationModel" class="invesco-nav">
     <div class="logo">
-        <img src="${properties.logoImage @ context='uri'}" alt="Invesco QQQ Logo" class="logo-img" />
+        <img data-sly-test="${nav.logoImage}"
+             src="${nav.logoImage @ context='uri'}"
+             alt="Invesco QQQ Logo"
+             class="logo-img" />
         <span>Invesco QQQ</span>
     </div>
 
     <!-- Navigation Links -->
     <div class="nav-links">
-        <ul>
-            <li data-sly-list.link="${properties.links}">
+        <ul data-sly-list.link="${properties.links}">
+            <li>
                 <a href="${link.url}">${link.text}</a>
             </li>
         </ul>
@@ -19,4 +21,3 @@
         <a href="${properties.buttonURL}" class="btn btn-primary">${properties.buttonText}</a>
     </div>
 </div>
-

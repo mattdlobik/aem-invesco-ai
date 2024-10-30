@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jcr:root
-    xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
-    xmlns:cq="http://www.day.com/jcr/cq/1.0"
-    xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
-    jcr:primaryType="cq:Dialog"
-    jcr:title="InvescoNav Configuration">
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+          xmlns:cq="http://www.day.com/jcr/cq/1.0"
+          xmlns:granite="http://www.adobe.com/jcr/granite/1.0"
+          xmlns:jcr="http://www.jcp.org/jcr/1.0"
+          xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+          jcr:primaryType="nt:unstructured"
+          jcr:title="Invesco Navigation"
+          sling:resourceType="cq/gui/components/authoring/dialog"
+          mode="edit">
 
-    <content jcr:primaryType="nt:unstructured" sling:resourceType="granite/ui/components/coral/foundation/container">
+    <content jcr:primaryType="nt:unstructured"
+             sling:resourceType="granite/ui/components/coral/foundation/container">
         <items jcr:primaryType="nt:unstructured">
-            <tabs jcr:primaryType="nt:unstructured" sling:resourceType="granite/ui/components/coral/foundation/tabs">
+            <tabs jcr:primaryType="nt:unstructured"
+                  sling:resourceType="granite/ui/components/coral/foundation/tabs">
                 <items jcr:primaryType="nt:unstructured">
 
                     <!-- Logo Tab -->
@@ -17,10 +22,16 @@
                             <logoImage
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                autoStart="{Boolean}false"
+                                class="cq-droptarget"
                                 fieldLabel="Logo Image"
+                                fileNameParameter="./fileName"
+                                fileReferenceParameter="./logoImage"
+                                mimeTypes="[image/gif,image/jpeg,image/png,image/webp,image/tiff]"
+                                multiple="{Boolean}true"
                                 name="./logoImage"
-                                mimeTypes="[image/png,image/jpeg,image/gif]"
-                                allowUpload="{Boolean}true"/>
+                                title="Upload Logo Image"
+                                uploadUrl="${suffix.path}"/>
                         </items>
                     </logoTab>
 
