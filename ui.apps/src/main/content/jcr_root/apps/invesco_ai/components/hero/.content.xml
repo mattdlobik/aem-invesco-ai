@@ -1,0 +1,11 @@
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0"
+          xmlns:cq="http://www.day.com/jcr/cq/1.0"
+          xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+          jcr:primaryType="cq:Component"
+          jcr:title="Hero Component"
+          jcr:description="A two-column hero component with dynamic content for title, date, author info, and images"
+          componentGroup="Invesco AI - Content"
+          sling:resourceSuperType="core/wcm/components/structure/container/v1/container"
+          categories="[invesco.ai.herocomponent]"
+          data-component-type="hero-component">
+</jcr:root>

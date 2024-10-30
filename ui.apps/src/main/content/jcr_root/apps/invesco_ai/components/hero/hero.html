@@ -1,0 +1,31 @@
+<div class="content">
+    <!-- Left column with text and author info -->
+    <div class="left-column">
+        <h2>${properties.title @ context='text'}</h2>
+        <h1>${properties.mainHeading @ context='text'}</h1>
+        <p class="date">${properties.date @ context='text'}</p>
+
+        <!-- Author 1 -->
+        <div class="author-info">
+            <img src="${properties.author1Image @ context='unsafe'}" alt="${properties.author1Name @ context='text'}">
+            <div class="author-details">
+                <div class="name">${properties.author1Name @ context='text'}</div>
+                <div class="position">${properties.author1Position @ context='text'}</div>
+            </div>
+        </div>
+
+        <!-- Author 2 -->
+        <div class="author-info">
+            <img src="${properties.author2Image @ context='unsafe'}" alt="${properties.author2Name @ context='text'}">
+            <div class="author-details">
+                <div class="name">${properties.author2Name @ context='text'}</div>
+                <div class="position">${properties.author2Position @ context='text'}</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Right column with main image -->
+    <div class="right-column">
+        <img src="${properties.rightImage @ context='unsafe'}" alt="Market Image">
+    </div>
+</div>

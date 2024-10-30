@@ -10,6 +10,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oxanium:wght@200..800&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Quicksand:wght@300..700&display=swap');
 
 .title {
   display: none;
@@ -32,12 +33,13 @@
   z-index: 1000;
 }
 
-/* Logo section */
+/* Logo Section */
+
 .logo {
   display: flex;
   align-items: center;
   gap: 10px;
-  min-width: 150px; /* Ensure logo has minimum width */
+  min-width: 150px;
 }
 
 .logo-img {
@@ -52,7 +54,36 @@
   white-space: nowrap;
 }
 
+/* AI-Gen Title */
+
+#aigentitle {
+  font-size: 1rem;
+  font-weight: bold;
+  line-height: 1.2;
+  font-family: "Quicksand", sans-serif;
+  color: #000ad2;
+  transition: color 0.3s ease;
+  animation: colorPulse 2.5s ease-in-out infinite;
+  margin: 0 auto;
+  max-width: 75pc;
+  padding: 40px;
+}
+
+#aigentitle:hover {
+  color: #00008b;
+}
+
+@keyframes colorPulse {
+  0%, 100% {
+    color: #000ad2;
+  }
+  50% {
+    color: #1a1aff;
+  }
+}
+
 /* Navigation links */
+
 .nav-links {
   display: flex;
   align-items: center;
@@ -77,9 +108,10 @@
   color: #000;
   text-decoration: none;
   font-size: 0.9rem;
-  font-weight: 500;
-  padding: 5px 30px;
+  font-weight: 700;
+  padding: 5px 25px;
   transition: color 0.2s ease;
+  font-family: "Quicksand", sans-serif;
 }
 
 .nav-links a:hover {
@@ -87,8 +119,9 @@
 }
 
 /* Button */
+
 .nav-button {
-  min-width: 150px; /* Match logo width for balance */
+  min-width: 150px;
   text-align: right;
   padding-right: 50px;
 }
@@ -97,13 +130,12 @@
   background-color: #0044cc;
   color: white;
   padding: 12px 24px;
-  border-radius: 4px;
   text-decoration: none;
   font-size: 0.9rem;
-  font-weight: 500;
   transition: background-color 0.2s ease;
   white-space: nowrap;
   display: inline-block;
+  font-weight: 600;
 }
 
 .nav-button .btn-primary:hover {
@@ -111,6 +143,7 @@
 }
 
 /* Dropdown styles */
+
 .nav-links li.dropdown {
   position: relative;
 }
@@ -170,7 +203,6 @@
 
 /* Two Column Styles */
 
-/* Container for the two-column layout */
 .content {
   display: flex;
   padding: 40px;
@@ -202,6 +234,7 @@
   font-weight: bold;
   margin-bottom: 10px;
   line-height: 1.2;
+  font-family: "PT Serif", serif;
 }
 
 .left-column .date {
@@ -255,7 +288,7 @@
 /* Image Styles */
 
 #graphinv {
-  width: 60% !important;
+  width: 40% !important;
   margin: 0 auto !important;
 }
 

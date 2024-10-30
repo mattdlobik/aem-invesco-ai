@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root
+    xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+    xmlns:cq="http://www.day.com/jcr/cq/1.0"
+    xmlns:jcr="http://www.jcp.org/jcr/1.0"
+    xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="cq:Dialog"
+    title="Hero Component Dialog"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+
+        <layout
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="granite/ui/components/coral/foundation/layout/fixedcolumns" />
+
+        <items jcr:primaryType="nt:unstructured">
+
+            <!-- Left Column Content -->
+            <column
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/container">
+
+                <!-- Title Field -->
+                <title
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                    fieldLabel="Section Title"
+                    name="./title" />
+
+                <!-- Main Heading Field -->
+                <mainHeading
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                    fieldLabel="Main Heading"
+                    name="./mainHeading" />
+
+                <!-- Date Field -->
+                <date
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                    fieldLabel="Date"
+                    name="./date" />
+
+                <!-- Author 1 Details -->
+                <author1Title
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                    fieldLabel="Author 1 Name"
+                    name="./author1Name" />
+
+                <author1Position
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                    fieldLabel="Author 1 Position"
+                    name="./author1Position" />
+
+                <author1Image
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                    fieldLabel="Author 1 Image"
+                    name="./author1Image"
+                    autoStart="true"
+                    usePrimaryType="true"
+                    allowUpload="true" />
+
+                <!-- Author 2 Details -->
+                <author2Title
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                    fieldLabel="Author 2 Name"
+                    name="./author2Name" />
+
+                <author2Position
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                    fieldLabel="Author 2 Position"
+                    name="./author2Position" />
+
+                <author2Image
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                    fieldLabel="Author 2 Image"
+                    name="./author2Image"
+                    autoStart="true"
+                    usePrimaryType="true"
+                    allowUpload="true" />
+            </column>
+
+            <!-- Right Column Image -->
+            <rightImage
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                fieldLabel="Right Column Main Image"
+                name="./rightImage"
+                autoStart="true"
+                usePrimaryType="true"
+                allowUpload="true" />
+
+        </items>
+    </content>
+</jcr:root>
+
