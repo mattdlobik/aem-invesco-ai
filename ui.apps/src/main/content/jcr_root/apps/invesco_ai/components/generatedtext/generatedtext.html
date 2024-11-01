@@ -1,9 +1,7 @@
-<sly data-sly-use.clientlib="core/wcm/components/commons/v1/templates/clientlib.html"
-     data-sly-call="${clientlib.css @ categories='invesco.ai.generatedtext'}"></sly>
-
 <div class="cmp-generated-text"
      data-sly-use.model="com.invesco.core.GeneratedTextComponent"
      data-path="${resource.path}">
+    <!-- Render the generated content based on stock ticker from page property -->
     <div data-sly-test="${model.text}"
          class="cmp-generated-text__response"
          role="region"
@@ -12,9 +10,6 @@
     </div>
     <div data-sly-test="${!model.text && wcmmode.edit}"
          class="cmp-generated-text__placeholder">
-        Please configure the prompt and fund ticker to generate text
+        Please configure the prompt in the template to generate text based on ticker
     </div>
 </div>
-
-<sly data-sly-use.clientlib="core/wcm/components/commons/v1/templates/clientlib.html"
-     data-sly-call="${clientlib.js @ categories='invesco.ai.generatedtext'}"></sly>

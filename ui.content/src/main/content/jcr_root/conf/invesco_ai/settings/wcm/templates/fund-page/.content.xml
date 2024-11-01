@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0"
+          jcr:primaryType="cq:Template">
+    <jcr:content
+        cq:templateType="/conf/invesco_ai/settings/wcm/template-types/page"
+        jcr:description="This page will take a stock ticker for a fund as a property.&#xd;&#xa;&#xd;&#xa;The stock ticker property will then be used in conjunction with generate text components throughout the page to create content related to the fund."
+        jcr:primaryType="cq:PageContent"
+        jcr:title="Fund Page"
+        status="draft"/>
+</jcr:root>
