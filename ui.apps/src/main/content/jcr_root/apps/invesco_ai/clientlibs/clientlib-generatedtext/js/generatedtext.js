@@ -1,19 +1,18 @@
 (function() {
     "use strict";
 
-    // Listen for multiple dialog events
+    // Listen for dialog events
     $(document).on('coral-overlay:open dialog-ready foundation-contentloaded foundation-form-loaded', function(e) {
         console.log('Event triggered:', e.type);
 
         let button = document.querySelector('.text-generator-button');
         if (button) {
-            // Remove any existing click handlers
-            // button.removeEventListener('click', handleClick);
-
+            // Remove any existing click handlers to avoid duplicates
+            button.removeEventListener('click', handleClick);
             // Add click handler
             button.addEventListener('click', handleClick);
-        // } else {
-        //     console.log('Button not found');
+        } else {
+            console.log('Button not found');
         }
     });
 
@@ -22,13 +21,15 @@
         console.log('Button clicked');
 
         let form = e.target.closest('form');
-        let text = form.querySelector('[name="./text"]')
+        // Select all fields related to "./text" - hidden and visible
+        let textFields = form.querySelectorAll('[name="./text"]');
+        let visibleTextDiv = form.querySelector('.cq-RichText-editable'); // Adjust selector if needed
         let promptTemplate = form.querySelector('[name="./promptTemplate"]').value;
         let fundTicker = form.querySelector('[name="./fundTicker"]').value;
 
         console.log('Values:', { promptTemplate, fundTicker });
 
-        // Fetch to backend
+        // Fetch data from backend
         fetch('/bin/openai', {
             method: 'POST',
             headers: {
@@ -39,13 +40,23 @@
                 fund: fundTicker
             })
         })
-            .then(response => response.text())
+            .then(response => {
+                console.log('Fetch response status:', response.status);
+                return response.text();
+            })
             .then((body) => {
                 console.log('Backend response:', body);
-                text.value = body;
+
+                textFields.forEach(field => field.value = body);
+
+                if (visibleTextDiv) {
+                    visibleTextDiv.innerHTML = body;
+                }
+
+                textFields.forEach(field => field.dispatchEvent(new Event('change')));
             })
             .catch(error => {
-                alert('Failed to hit backend');
+                alert('Failed to generate text');
                 console.error('Error:', error);
             });
     }
