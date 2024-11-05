@@ -4,7 +4,7 @@
           jcr:primaryType="cq:Page">
     <jcr:content
         cq:deviceGroups="[mobile/groups/responsive]"
-        cq:template="/conf/invesco_ai/settings/wcm/templates/page-content"
+        cq:template="/conf/invesco_ai/settings/wcm/templates/fund-page"
         jcr:primaryType="cq:PageContent"
         sling:resourceType="invesco_ai/components/page">
         <root
@@ -18,21 +18,8 @@
             <container
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="invesco_ai/components/container"
-                layout="responsiveGrid">
-                <title
-                    jcr:primaryType="nt:unstructured"
-                    sling:resourceType="invesco_ai/components/title"
-                    editable="{Boolean}true"/>
-                <container
-                    jcr:primaryType="nt:unstructured"
-                    sling:resourceType="invesco_ai/components/container"
-                    editable="{Boolean}true"
-                    layout="responsiveGrid"/>
-            </container>
-            <experiencefragment-footer
-                jcr:primaryType="nt:unstructured"
-                sling:resourceType="invesco_ai/components/experiencefragment"
-                fragmentVariationPath="/content/experience-fragments/invesco_ai/us/en/site/footer/master"/>
+                editable="{Boolean}true"
+                layout="responsiveGrid"/>
         </root>
         <cq:responsive jcr:primaryType="nt:unstructured">
             <breakpoints jcr:primaryType="nt:unstructured">
