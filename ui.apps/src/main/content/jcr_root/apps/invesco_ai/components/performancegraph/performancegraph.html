@@ -1,0 +1,91 @@
+<script data-sly-use.model="com.invesco.core.models.PerformanceGraphModel">
+    (function() {
+        "use strict";
+
+        // Listen for dialog events in AEM
+        $(document).on('coral-overlay:open dialog-ready foundation-contentloaded foundation-form-loaded', function(e) {
+            console.log('Event triggered:', e.type);
+
+
+            // Select the Generate Graph button in the dialog
+            let button = document.querySelector('.performance-graph-button');
+            if (button) {
+                // Remove any existing click handlers to avoid duplicates
+                button.removeEventListener('click', handleClick);
+                // Add click handler
+                button.addEventListener('click', handleClick);
+            } else {
+                console.log('Generate Graph button not found');
+            }
+        });
+
+        // Click handler function
+        function handleClick(e) {
+            e.preventDefault();
+            console.log('Generate Graph button clicked');
+
+            // Get the form and input values from the dialog
+            let form = e.target.closest('form');
+            let fundTicker = form.querySelector('[name="./fundTicker"]').value;
+
+            console.log('Fund Ticker:', fundTicker);
+
+            if (!fundTicker) {
+                alert("Please enter a valid ticker.");
+                return;
+            }
+
+            // Call the backend servlet to fetch performance data
+            fetch('/bin/invesco/data', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ ticker: fundTicker })
+            })
+                .then(response => {
+                    console.log('Fetch response status:', response.status);
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: \${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log("Data fetched from servlet:", data);
+                    const chartData = parseDataForHighcharts(data);
+                    renderHighchartBarGraph("performance-chart-container", chartData); // Assuming a container with this ID
+                })
+                .catch(error => {
+                    console.error("Error fetching data:", error);
+                    alert("Failed to fetch data from the backend. Please check the console for details.");
+                });
+        }
+
+        // Function to parse data for Highcharts format
+        function parseDataForHighcharts(data) {
+            console.log("Parsing data for Highcharts:", data);
+            return data.map(series => ({
+                name: series.name,
+                data: series.data.map(point => (point !== null ? point : 0)) // Replace nulls with 0
+            }));
+        }
+
+        // Function to render the Highcharts bar graph
+        function renderHighchartBarGraph(containerId, seriesData) {
+            console.log("Rendering Highcharts graph in container:", containerId);
+            Highcharts.chart(containerId, {
+                chart: { type: 'bar' },
+                title: { text: 'Fund Performance Data' },
+                xAxis: {
+                    categories: seriesData[0] && seriesData[0].data ? seriesData[0].data.map((_, index) => `Metric \${index + 1}`) : [],
+                    title: { text: 'Performance Metrics' }
+                },
+                yAxis: { title: { text: 'Value' } },
+                series: seriesData,
+                tooltip: { pointFormat: 'Value: <b>{point.y:.2f}</b>' }
+            });
+        }
+    })();
+
+</script>
+
+<!-- Container where Highcharts will render the chart -->
+<div id="performance-chart-container" style="width: 100%; height: 400px;"></div>

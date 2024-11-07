@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root
+    xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+    xmlns:cq="http://www.day.com/jcr/cq/1.0"
+    xmlns:jcr="http://www.jcp.org/jcr/1.0"
+    xmlns:granite="http://www.adobe.com/jcr/granite/1.0"
+    xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Performance Graph"
+    sling:resourceType="cq/gui/components/authoring/dialog"
+    componentId="performance-graph">
+
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container"
+        granite:class="performance-graph-container">
+
+        <items jcr:primaryType="nt:unstructured">
+            <!-- Text Field for Stock Ticker -->
+            <fundTicker
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                fieldLabel="Fund Ticker"
+                name="./fundTicker"
+                required="{Boolean}true"
+                granite:class="performance-graph-ticker"/>
+
+            <!-- Button to Generate the Graph -->
+            <generateGraphButton
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/button"
+                text="Generate Graph"
+                variant="primary"
+                granite:class="performance-graph-button"/>
+        </items>
+    </content>
+</jcr:root>

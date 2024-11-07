@@ -19,13 +19,13 @@ const resolve = {
 module.exports = {
     resolve: resolve,
     entry: {
-        site: SOURCE_ROOT + '/site/main.ts'
+        site: SOURCE_ROOT + '/site/main.ts', // Main entry point, where Highcharts will be imported
     },
     output: {
         filename: (chunkData) => {
             return chunkData.chunk.name === 'dependencies' ? 'clientlib-dependencies/[name].js' : 'clientlib-site/[name].js';
         },
-        path: path.resolve(__dirname, 'dist')
+        path: path.resolve(__dirname, '../ui.apps/src/main/content/jcr_root/apps/invesco_ai/clientlibs/site/resources')
     },
     module: {
         rules: [
@@ -57,10 +57,10 @@ module.exports = {
                     {
                         loader: 'postcss-loader',
                         options: {
-                            plugins() {
-                                return [
+                            postcssOptions: {
+                                plugins: [
                                     require('autoprefixer')
-                                ];
+                                ]
                             }
                         }
                     },
