@@ -2,16 +2,13 @@
     "compilerOptions": {
         "target": "es5",
         "module": "es6",
-        "moduleResolution": "node", // Resolves modules in `node_modules`
-        "baseUrl": "../ui.frontend",
-        "removeComments": true,
-        "allowJs": true,
-        "preserveConstEnums": true,
+        "strict": true,
+        "jsx": "react",
+        "moduleResolution": "node",
+        "outDir": "./dist",
         "allowSyntheticDefaultImports": true,
-        "esModuleInterop": true, // Allows default imports from CommonJS modules
         "sourceMap": true
     },
-    "include": [
-        "./src/**/*.ts"
-    ]
+    "include": ["src/**/*"],
+    "exclude": ["node_modules"]
 }

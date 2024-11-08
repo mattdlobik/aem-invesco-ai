@@ -1,5 +1,17 @@
-<div id="container" style="width:100%; height:400px;">Test</div>
+<!-- Title for the stock performance chart, often handled in the page properties -->
 <sly data-sly-use.clientlib="core/wcm/components/commons/v1/templates/clientlib.html"
      data-sly-call="${clientlib.js @ categories='invesco.ai.highchart'}"></sly>
 
+<!-- Highcharts container with styling for visibility -->
+<style>
+    .highchart-container {
+        display: block;
+        width: 100%;
+        height: 400px;
+        background-color: #f9f9f9; /* Optional for better visibility */
+    }
+</style>
 
+
+<!-- Chart container, with stock ticker as a data attribute -->
+<div id="highchart-container" data-ticker="${properties.ticker @ context='text'}" class="highchart-container"></div>

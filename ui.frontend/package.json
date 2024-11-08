@@ -57,7 +57,10 @@
     "webpack-merge": "^5.8.0"
   },
   "dependencies": {
-    "highcharts": "^11.4.8"
+    "cors": "^2.8.5",
+    "express": "^4.21.1",
+    "highcharts": "^11.4.8",
+    "request": "^2.88.2"
   },
   "browserslist": [
     "last 2 version",
