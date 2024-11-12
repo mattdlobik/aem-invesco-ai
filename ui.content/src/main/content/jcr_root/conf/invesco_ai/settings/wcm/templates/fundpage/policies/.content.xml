@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
-          jcr:primaryType="cq:Page">
-    <jcr:content cq:policy="aem-invesco-ai/components/fundpage/policy"
-                 jcr:primaryType="nt:unstructured"
-                 sling:resourceType="wcm/core/components/policies/mappings">
-        <root cq:policy="aem-invesco-ai/components/container/policy_1574694950110"
-              jcr:primaryType="nt:unstructured"
-              sling:resourceType="wcm/core/components/policies/mapping">
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+    jcr:primaryType="cq:Page">
+    <jcr:content
+        cq:lastModified="{Date}2024-11-12T11:23:30.301-08:00"
+        cq:lastModifiedBy="admin"
+        cq:policy="invesco_ai/components/page/policy"
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="wcm/core/components/policies/mappings">
+        <root
+            cq:policy="invesco_ai/components/container/policy_1574694950110"
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="wcm/core/components/policies/mapping">
             <container
-                    cq:policy="aem-invesco-ai/components/container/policy_1574695586801"
-                    jcr:primaryType="nt:unstructured"
-                    sling:resourceType="wcm/core/components/policies/mapping" />
+                cq:policy="invesco_ai/components/container/policy_1574695586800"
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="wcm/core/components/policies/mapping"/>
         </root>
     </jcr:content>
 </jcr:root>

@@ -1,19 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
-          jcr:primaryType="cq:Page">
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+    jcr:primaryType="cq:Page">
     <jcr:content
-            cq:template="/conf/aem-invesco-ai/settings/wcm/templates/fundpage"
-            jcr:primaryType="cq:PageContent"
-            sling:resourceType="aem-invesco-ai/components/fundpage"
-            cq:robotsTags="[noindex,nofollow]">
+        cq:lastModified="{Date}2024-11-12T11:22:59.079-08:00"
+        cq:lastModifiedBy="admin"
+        cq:template="/conf/invesco_ai/settings/wcm/templates/fundpage"
+        jcr:primaryType="cq:PageContent"
+        sling:resourceType="invesco_ai/components/fundpage">
         <root
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="invesco_ai/components/container"
+            layout="responsiveGrid">
+            <container
                 jcr:primaryType="nt:unstructured"
-                sling:resourceType="aem-invesco-ai/components/container"
+                sling:resourceType="invesco_ai/components/container"
                 layout="responsiveGrid">
-            <generatedText
+                <generatedtext
+                    jcr:created="{Date}2024-11-12T11:22:59.076-08:00"
+                    jcr:createdBy="admin"
+                    jcr:lastModified="{Date}2024-11-12T11:22:59.076-08:00"
+                    jcr:lastModifiedBy="admin"
                     jcr:primaryType="nt:unstructured"
-                    sling:resourceType="aem-invesco-ai/components/container"
-                    layout="responsiveGrid"/>
+                    sling:resourceType="invesco_ai/components/generatedtext"/>
+            </container>
         </root>
     </jcr:content>
 </jcr:root>

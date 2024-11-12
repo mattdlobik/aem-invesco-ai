@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"
-          jcr:primaryType="cq:Template">
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0"
+    jcr:primaryType="cq:Template">
     <jcr:content
-            cq:lastModified="{Date}2022-10-12T17:17:01.261-05:00"
-            cq:lastModifiedBy="admin"
-            cq:templateType="/conf/vikingcruises/settings/wcm/template-types/silp"
-            jcr:primaryType="cq:PageContent"
-            jcr:title="Fund Page"
-            status="enabled"/>
+        cq:lastModified="{Date}2024-11-12T11:25:15.290-08:00"
+        cq:lastModifiedBy="admin"
+        cq:templateType="/conf/invesco_ai/settings/wcm/template-types/page"
+        jcr:description="AI-generated fund summary page"
+        jcr:primaryType="cq:PageContent"
+        jcr:title="fundpage"
+        status="enabled"/>
 </jcr:root>
