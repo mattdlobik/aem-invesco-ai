@@ -4,7 +4,7 @@
           jcr:primaryType="cq:Page">
     <jcr:content
         cq:deviceGroups="[mobile/groups/responsive]"
-        cq:template="/conf/invesco_ai/settings/wcm/templates/fund-page"
+        cq:template="/conf/invesco_ai/settings/wcm/templates/fund-page-new"
         jcr:primaryType="cq:PageContent"
         sling:resourceType="invesco_ai/components/page">
         <root
