@@ -3,7 +3,8 @@
           jcr:primaryType="cq:Template">
     <jcr:content
         cq:templateType="/conf/invesco_ai/settings/wcm/template-types/page"
+        jcr:description="Fund Info Template"
         jcr:primaryType="cq:PageContent"
-        jcr:title="Fund Page"
+        jcr:title="Fund Info Page"
         status="enabled"/>
 </jcr:root>

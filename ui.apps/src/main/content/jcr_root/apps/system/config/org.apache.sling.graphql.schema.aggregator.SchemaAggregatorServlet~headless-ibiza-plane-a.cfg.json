@@ -1,0 +1,18 @@
+// Configuration created by Apache Sling JCR Installer
+{
+  "sling.servlet.extensions":[
+    "GQLschema"
+  ],
+  "sling.servlet.methods":[
+    "GET"
+  ],
+  "selectors.to.partials.mapping":[
+    "A:ibiza.content,cfm.schema,cf.schema"
+  ],
+  "sling.servlet.resourceTypes":[
+    "sling/servlet/default"
+  ],
+  "sling.servlet.selectors":[
+    "A"
+  ]
+}

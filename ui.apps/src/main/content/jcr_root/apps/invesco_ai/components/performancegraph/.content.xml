@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jcr:root
-    xmlns:jcr="http://www.jcp.org/jcr/1.0"
-    xmlns:cq="http://www.day.com/jcr/cq/1.0"
-    jcr:primaryType="cq:Component"
-    jcr:description="A component for generating performance bar charts"
-    componentGroup="Invesco AI - Content"
-    categories="[performancegraph]"
-    jcr:title="Performance Graph"
-    dependencies="[core/highcharts, core/jquery]">
-</jcr:root>
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0"
+          jcr:description="A component for generating performance bar charts"
+          jcr:primaryType="cq:Component"
+          jcr:title="Performance Graph"
+          categories="[performancegraph]"
+          componentGroup="Invesco AI - Content"
+          dependencies="[core/highcharts, core/jquery]"/>
