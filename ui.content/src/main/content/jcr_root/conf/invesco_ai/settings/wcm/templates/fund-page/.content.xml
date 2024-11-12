@@ -1,10 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0"
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+          xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
           jcr:primaryType="cq:Template">
+    <cq:dialog
+        jcr:primaryType="nt:unstructured"
+        jcr:title="Page Properties"
+        sling:resourceType="cq/gui/components/authoring/dialog">
+        <content
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="granite/ui/components/coral/foundation/container">
+            <items jcr:primaryType="nt:unstructured">
+                <tabs
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                    maximized="{Boolean}true">
+                    <items jcr:primaryType="nt:unstructured">
+                        <basic
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="Basic"
+                            sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                            margin="{Boolean}true">
+                            <items jcr:primaryType="nt:unstructured">
+                                <column
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/container">
+                                    <items jcr:primaryType="nt:unstructured">
+                                        <ticker
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                            fieldLabel="Stock Ticker"
+                                            name="./stockTicker"
+                                            required="{Boolean}true"/>
+                                    </items>
+                                </column>
+                            </items>
+                        </basic>
+                    </items>
+                </tabs>
+            </items>
+        </content>
+    </cq:dialog>
     <jcr:content
         cq:templateType="/conf/invesco_ai/settings/wcm/template-types/page"
-        jcr:description="Fund Info Template"
         jcr:primaryType="cq:PageContent"
-        jcr:title="Fund Info Page"
+        jcr:title="Fund Page"
         status="enabled"/>
 </jcr:root>
