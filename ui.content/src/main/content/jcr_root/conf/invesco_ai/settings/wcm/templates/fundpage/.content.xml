@@ -7,6 +7,6 @@
         cq:templateType="/conf/invesco_ai/settings/wcm/template-types/page"
         jcr:description="AI-generated fund summary page"
         jcr:primaryType="cq:PageContent"
-        jcr:title="fundpage"
+        jcr:title="Fund Page"
         status="enabled"/>
 </jcr:root>
