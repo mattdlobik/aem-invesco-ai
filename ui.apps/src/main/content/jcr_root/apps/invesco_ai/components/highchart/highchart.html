@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html xmlns:cq="http://www.day.com/cq/1.0">
+<head>
+    <title>Highcharts Performance Chart</title>
+    <style>
+        .highchart-container {
+            display: block;
+            width: 70%; /* Changed from 100% to 70% */
+            height: 400px;
+            background-color: #ffffff;
+            margin: 0 auto; /* Centers the container */
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+<!-- Container for Highcharts -->
+<div id="highchart-container" class="highchart-container"></div>
+
+<script>
+    (function() {
+        var chartId = 'highchart-container';
+
+        // Check if Highcharts is loaded
+        if (typeof Highcharts === 'undefined') {
+            var script = document.createElement('script');
+            script.src = 'https://code.highcharts.com/highcharts.js';
+            script.onload = function() {
+                initChart();
+            };
+            document.head.appendChild(script);
+        } else {
+            initChart();
+        }
+
+        function initChart() {
+            Highcharts.chart(chartId, {
+                chart: {
+                    type: 'column',
+                    backgroundColor: '#ffffff',
+                },
+                title: {
+                    text: '',
+                },
+                xAxis: {
+                    categories: ['YTD', '1 Year', '3 Year', '5 Year', '10 Year', 'Since Inception'],
+                    lineColor: '#e6e6e6',
+                    tickWidth: 0,
+                    labels: {
+                        style: {
+                            fontSize: '12px',
+                            fontFamily: 'Arial, sans-serif',
+                            color: '#666666',
+                        },
+                    },
+                },
+                yAxis: {
+                    min: -25,
+                    max: 100,
+                    title: {
+                        text: '%',
+                        style: {
+                            fontSize: '12px',
+                            fontFamily: 'Arial, sans-serif',
+                            color: '#666666',
+                        },
+                    },
+                    gridLineColor: '#e6e6e6',
+                    labels: {
+                        style: {
+                            fontSize: '12px',
+                            fontFamily: 'Arial, sans-serif',
+                            color: '#666666',
+                        },
+                    },
+                },
+                legend: {
+                    align: 'center',
+                    verticalAlign: 'top',
+                    layout: 'horizontal',
+                    itemStyle: {
+                        fontSize: '12px',
+                        fontFamily: 'Arial, sans-serif',
+                        color: '#333333',
+                    },
+                    itemHoverStyle: {
+                        color: '#000000',
+                    },
+                },
+                tooltip: {
+                    shared: true,
+                    backgroundColor: '#ffffff',
+                    borderColor: '#cccccc',
+                    borderRadius: 4,
+                    style: {
+                        fontSize: '12px',
+                        fontFamily: 'Arial, sans-serif',
+                        color: '#333333',
+                    },
+                    formatter: function() {
+                        var s = '<b>' + this.x + '</b><br/>';
+                        var points = this.points;
+                        for (var i = 0; i < points.length; i++) {
+                            s += '<span style="color:' + points[i].color + '">\u25CF</span> ' + points[i].series.name + ': <b>' + points[i].y + '%</b><br/>';
+                        }
+                        return s;
+                    },
+                },
+                plotOptions: {
+                    column: {
+                        dataLabels: {
+                            enabled: true,
+                            style: {
+                                fontSize: '10px',
+                                fontFamily: 'Arial, sans-serif',
+                                color: '#333333',
+                            },
+                        },
+                        borderWidth: 0,
+                        borderRadius: 2,
+                    },
+                },
+                series: [
+                    {
+                        name: "Alerian Galaxy Global Blockchain Equity, Trusts & ETPs Net Return Index",
+                        data: [20, 85, null, null, null, null],
+                        color: '#1f78b4',
+                    },
+                    {
+                        name: "MSCI AC World Index",
+                        data: [15, 30, null, null, null, null],
+                        color: '#33a1de',
+                    },
+                    {
+                        name: "Fund NAV",
+                        data: [18, 55, 5, null, null, 10],
+                        color: '#4f90c5',
+                    },
+                    {
+                        name: "Fund Market Price",
+                        data: [17, 60, 3, null, null, 12],
+                        color: '#80bde3',
+                    },
+                ],
+            });
+        }
+    })();
+</script>
+</body>
+</html>

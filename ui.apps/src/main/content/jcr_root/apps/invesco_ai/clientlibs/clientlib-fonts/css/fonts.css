@@ -1,0 +1,83 @@
+/* Graphik TT Fonts */
+@font-face {
+    font-family: 'Graphik TT';
+    src: url('../resources/fonts/Graphik TT-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Graphik TT';
+    src: url('../resources/fonts/Graphik TT-Light Italic.ttf') format('truetype');
+    font-weight: 300;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Graphik TT';
+    src: url('../resources/fonts/Graphik TT-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Graphik TT';
+    src: url('../resources/fonts/Graphik TT-Medium Italic.ttf') format('truetype');
+    font-weight: 500;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Graphik TT';
+    src: url('../resources/fonts/Graphik TT-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Graphik TT';
+    src: url('../resources/fonts/Graphik TT-Regular Italic.ttf') format('truetype');
+    font-weight: 400;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Graphik TT';
+    src: url('../resources/fonts/Graphik TT-Semibold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Graphik TT';
+    src: url('../resources/fonts/Graphik TT-Semibold Italic.ttf') format('truetype');
+    font-weight: 600;
+    font-style: italic;
+}
+
+/* Invesco JS Icon Fonts */
+@font-face {
+    font-family: 'Invesco JS Icon';
+    src: url('../resources/fonts/invesco-js-icon.woff2') format('woff2'),
+    url('../resources/fonts/invesco-js-icon.woff') format('woff'),
+    url('../resources/fonts/invesco-js-icon.eot') format('embedded-opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Invesco Editor Fonts */
+@font-face {
+    font-family: 'Invesco Editor';
+    src: url('../resources/fonts/InvescoEditor-Regular.woff2') format('woff2'),
+    url('../resources/fonts/InvescoEditor-Regular.eot') format('embedded-opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Invesco Icons */
+@font-face {
+    font-family: 'Invesco Icons';
+    src: url('../resources/fonts/InvescoIcons.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
