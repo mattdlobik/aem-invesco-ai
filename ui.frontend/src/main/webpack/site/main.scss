@@ -1,13 +1,7 @@
-
 @import 'variables';
 @import 'base';
 @import './styles/*.scss';
 
-
-
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oxanium:wght@200..800&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Quicksand:wght@300..700&display=swap');
 
 body {
   background-color: #ffffff;
@@ -156,37 +150,6 @@ body {
   padding: 8px 16px;
 }
 
-/* Responsive adjustments */
-@media (max-width: 1024px) {
-  .nav-links ul {
-    gap: 20px;
-  }
-
-  .nav-links a {
-    font-size: 0.85rem;
-  }
-
-  .nav-button .btn-primary {
-    padding: 10px 20px;
-    font-size: 0.85rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .invesco-nav {
-    padding: 15px;
-  }
-
-  .nav-links {
-    display: none;
-  }
-
-  .logo, .nav-button {
-    min-width: auto;
-  }
-}
-
-
 /* Two Column Styles */
 
 .content {
@@ -201,11 +164,12 @@ body {
 
 .separator {
   width: 70%;
-  border-bottom: 1px solid #e0e0e0; /* Very faint light grey color */
-  margin: 0 auto; /* Centers the separator */
+  border-bottom: 1px solid #e0e0e0;
+  margin: 0 auto;
 }
 
 /* Left column styles */
+
 .left-column {
   flex: 1;
   display: flex;
@@ -236,6 +200,7 @@ body {
 }
 
 /* Author info section */
+
 .author-info {
   display: flex;
   align-items: center;
@@ -264,6 +229,7 @@ body {
 }
 
 /* Right column styles */
+
 .right-column {
   flex: 1;
   display: flex;
@@ -372,6 +338,37 @@ body {
   height: auto;
   border-radius: 4px;
   display: block;
+}
+
+/* Responsive adjustments */
+
+@media (max-width: 1024px) {
+  .nav-links ul {
+    gap: 20px;
+  }
+
+  .nav-links a {
+    font-size: 0.85rem;
+  }
+
+  .nav-button .btn-primary {
+    padding: 10px 20px;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .invesco-nav {
+    padding: 15px;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .logo, .nav-button {
+    min-width: auto;
+  }
 }
 
 @media (max-width: 768px) {

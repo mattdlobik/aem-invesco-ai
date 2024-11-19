@@ -1,0 +1,27 @@
+<!-- Include Client Library -->
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html"
+     data-sly-call="${clientlib.all @ categories='invesco.ai.fundnav'}"></sly>
+
+<div class="invesco-nav">
+    <div class="logo">
+        <img src="${properties.logoImage @ context='text'}"
+             alt="Invesco Logo" class="logo-img">
+        <span></span> <!-- If you have logo text, you can include it here -->
+    </div>
+
+    <div class="nav-links">
+        <ul>
+            <sly data-sly-list.navItem="${properties.navLinks}">
+                <li>
+                    <a href="${navItem.linkURL}">${navItem.linkText}</a>
+                </li>
+            </sly>
+        </ul>
+    </div>
+
+    <div class="nav-button">
+        <a href="${properties.buttonLink}" class="btn-primary">
+            ${properties.buttonText}
+        </a>
+    </div>
+</div>
