@@ -1,0 +1,10 @@
+{
+  "max_tokens": 1500,
+  "model": "gpt-4o-mini",
+  "messages": [
+    {
+      "role": "user",
+      "content": "For the fund 'ISDB', review the data attached and as a financial professional trying to interest investors, write an overview of it's current position and performance.  Limit it to 150 words.\ndata: [ {\n  \"name\" : \"Bloomberg 1-3 Yr Gov/Credit Total Return Index (USD)\",\n  \"data\" : [ 4.376757379325, 7.188266310525, 1.501908928009, 1.700587157329, 1.644961434412, 5.028860376391 ]\n}, {\n  \"name\" : \"Fund NAV\",\n  \"data\" : [ 5.222184, 8.712132, null, null, null, 6.024949718466 ]\n}, {\n  \"name\" : \"Fund Market Price\",\n  \"data\" : [ 5.089784, 8.623652, null, null, null, 5.924674136166 ]\n} ]"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workspaceFilter version="1.0">
+    <filter root="/conf/invesco_ai" mode="merge"/>
+    <filter root="/content/invesco_ai" mode="merge"/>
+    <filter root="/content/dam/invesco_ai" mode="merge">
+        <exclude pattern="/content/dam/invesco_ai(/.*)?"/>
+        <include pattern="/content/dam/invesco_ai/jcr:content(/.*)?"/>
+    </filter>
+    <filter root="/content/dam/invesco_ai/asset.jpg" mode="merge"/>
+    <filter root="/content/experience-fragments/invesco_ai" mode="merge"/>
+</workspaceFilter>
