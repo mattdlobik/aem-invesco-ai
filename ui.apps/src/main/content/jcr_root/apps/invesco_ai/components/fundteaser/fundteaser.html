@@ -1,0 +1,35 @@
+<!-- Include Client Library -->
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html"
+     data-sly-call="${clientlib.all @ categories='invesco.ai.fundteaser'}"></sly>
+
+<div class="content">
+    <!-- Left column with text and author info -->
+    <div class="left-column">
+        <h2>Invesco Alerian Galaxy Blockchain Users and Decentralized Commerce ETF</h2>
+        <h1>Quarterly Outlook Report</h1>
+        <p class="date">October 17, 2024</p>
+
+        <!-- Author 1 -->
+            <div class="author-info">
+                <img src="/content/dam/invesco_ai/ryan.png" alt="${properties.author1Name}">
+                <div class="author-details">
+                    <div class="name">Jim Doe</div>
+                    <div class="position">Senior Blockchain Fund Analyst</div>
+                </div>
+            </div>
+
+        <!-- Author 2 -->
+            <div class="author-info">
+                <img src="/content/dam/invesco_ai/jane.png" alt="${properties.author2Name}">
+                <div class="author-details">
+                    <div class="name">Jane Doe</div>
+                    <div class="position">Blockchain Product Strategist</div>
+                </div>
+            </div>
+    </div>
+
+    <!-- Right column with main image -->
+    <div class="right-column">
+        <img src="/content/dam/invesco_ai/blockchain.png" alt="${properties.imageAlt}">
+    </div>
+</div>

@@ -1,0 +1,34 @@
+<!-- Include Client Library -->
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html"
+     data-sly-call="${clientlib.all @ categories='invesco.ai.fundnav'}"></sly>
+
+<div class="invesco-nav">
+    <div class="logo">
+        <img src="/content/dam/invesco_ai/QQQ.png" alt="Invesco QQQ Logo" class="logo-img"/>
+        <span></span> <!-- If you have logo text, you can include it here -->
+    </div>
+
+    <div class="nav-links">
+        <ul>
+
+                <li>
+                    <a href="#">About QQQ</a>
+                </li>
+                <li>
+                    <a href="#">Performance</a>
+                </li>
+                <li>
+                    <a href="#">Insights and Education</a>
+                </li>
+                <li>
+                    <a href="#">About Invesco</a>
+
+        </ul>
+    </div>
+
+    <div class="nav-button">
+        <a href="${properties.buttonLink}" class="btn-primary">
+            Invest In QQQ
+        </a>
+    </div>
+</div>

@@ -1,0 +1,103 @@
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+          xmlns:cq="http://www.day.com/jcr/cq/1.0"
+          xmlns:jcr="http://www.jcp.org/jcr/1.0"
+          xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+          jcr:primaryType="nt:unstructured"
+          jcr:title="Generate Text"
+          sling:resourceType="cq/gui/components/authoring/dialog"
+          componentId="fund-teaser">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container"
+        layout="tabs">
+        <items jcr:primaryType="nt:unstructured">
+            <!-- Basic Tab -->
+            <basicTab
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/container"
+                jcr:title="Basic">
+                <items jcr:primaryType="nt:unstructured">
+                    <!-- Pretitle -->
+                    <pretitle
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldLabel="Pretitle"
+                        name="./pretitle"/>
+                    <!-- Title -->
+                    <title
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldLabel="Title"
+                        name="./title"
+                        required="{Boolean}true"/>
+                    <!-- Date -->
+                    <date
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/datepicker"
+                        fieldLabel="Date"
+                        name="./date"/>
+                    <!-- Author 1 Section -->
+                    <author1Section
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+                        fieldsetTitle="Author 1">
+                        <items jcr:primaryType="nt:unstructured">
+                            <author1Image
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                fieldLabel="Author 1 Image"
+                                rootPath="/content/dam"
+                                name="./author1Image"/>
+                            <author1Name
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Author 1 Name"
+                                name="./author1Name"/>
+                            <author1Position
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Author 1 Position"
+                                name="./author1Position"/>
+                        </items>
+                    </author1Section>
+                    <!-- Author 2 Section -->
+                    <author2Section
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+                        fieldsetTitle="Author 2">
+                        <items jcr:primaryType="nt:unstructured">
+                            <author2Image
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                fieldLabel="Author 2 Image"
+                                rootPath="/content/dam"
+                                name="./author2Image"/>
+                            <author2Name
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Author 2 Name"
+                                name="./author2Name"/>
+                            <author2Position
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Author 2 Position"
+                                name="./author2Position"/>
+                        </items>
+                    </author2Section>
+                    <!-- Main Image -->
+                    <image
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                        fieldLabel="Main Image"
+                        rootPath="/content/dam"
+                        name="./imagePath"/>
+                    <imageAlt
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldLabel="Image Alt Text"
+                        name="./imageAlt"/>
+                </items>
+            </basicTab>
+        </items>
+    </content>
+</jcr:root>
