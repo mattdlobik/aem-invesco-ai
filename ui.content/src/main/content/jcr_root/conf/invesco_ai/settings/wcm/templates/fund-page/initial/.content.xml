@@ -2,14 +2,11 @@
 <jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
     jcr:primaryType="cq:Page">
     <jcr:content
-        cq:lastModified="{Date}2024-11-19T14:08:16.928-08:00"
+        cq:lastModified="{Date}2024-11-19T19:38:54.046-08:00"
         cq:lastModifiedBy="admin"
         cq:template="/conf/invesco_ai/settings/wcm/templates/fund-page"
         jcr:primaryType="cq:PageContent"
-        sling:resourceType="invesco_ai/components/page"
-        pwaCachestrategy="staleWhileRevalidate"
-        pwaDisplay="standalone"
-        pwaOrientation="any">
+        sling:resourceType="invesco_ai/components/fundpage">
         <root
             jcr:primaryType="nt:unstructured"
             sling:resourceType="invesco_ai/components/container"
@@ -18,21 +15,43 @@
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="invesco_ai/components/container"
                 layout="responsiveGrid">
-                <fundsummary
-                    jcr:created="{Date}2024-11-19T14:06:40.353-08:00"
+                <fundnav
+                    jcr:created="{Date}2024-11-19T19:34:13.342-08:00"
                     jcr:createdBy="admin"
-                    jcr:lastModified="{Date}2024-11-19T14:08:16.923-08:00"
+                    jcr:lastModified="{Date}2024-11-19T19:34:13.342-08:00"
                     jcr:lastModifiedBy="admin"
                     jcr:primaryType="nt:unstructured"
-                    sling:resourceType="invesco_ai/components/fundsummary"
+                    sling:resourceType="invesco_ai/components/fundnav"/>
+                <fundteaser
+                    jcr:created="{Date}2024-11-19T19:35:27.211-08:00"
+                    jcr:createdBy="admin"
+                    jcr:lastModified="{Date}2024-11-19T19:35:27.211-08:00"
+                    jcr:lastModifiedBy="admin"
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="invesco_ai/components/fundteaser"/>
+                <marketrecap
+                    jcr:created="{Date}2024-11-19T19:38:26.006-08:00"
+                    jcr:createdBy="admin"
+                    jcr:lastModified="{Date}2024-11-19T19:38:35.857-08:00"
+                    jcr:lastModifiedBy="admin"
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="invesco_ai/components/marketrecap"
                     textIsRich="true"/>
+                <highchart
+                    jcr:created="{Date}2024-11-19T19:38:45.941-08:00"
+                    jcr:createdBy="admin"
+                    jcr:lastModified="{Date}2024-11-19T19:38:45.941-08:00"
+                    jcr:lastModifiedBy="admin"
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="invesco_ai/components/highchart"/>
+                <fundsummary
+                    jcr:created="{Date}2024-11-19T19:38:54.038-08:00"
+                    jcr:createdBy="admin"
+                    jcr:lastModified="{Date}2024-11-19T19:38:54.038-08:00"
+                    jcr:lastModifiedBy="admin"
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="invesco_ai/components/fundsummary"/>
             </container>
         </root>
-        <cq:featuredimage
-            jcr:lastModified="{Date}2024-11-19T14:07:03.344-08:00"
-            jcr:lastModifiedBy="admin"
-            jcr:primaryType="nt:unstructured"
-            sling:resourceType="core/wcm/components/image/v3/image"
-            altValueFromDAM="false"/>
     </jcr:content>
 </jcr:root>

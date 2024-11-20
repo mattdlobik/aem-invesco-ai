@@ -2,7 +2,7 @@
 <jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0"
     jcr:primaryType="cq:Template">
     <jcr:content
-        cq:lastModified="{Date}2024-11-19T14:08:16.928-08:00"
+        cq:lastModified="{Date}2024-11-19T19:38:54.046-08:00"
         cq:lastModifiedBy="admin"
         cq:templateType="/conf/invesco_ai/settings/wcm/template-types/page"
         jcr:description="AI generated fund page"

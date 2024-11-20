@@ -42,6 +42,15 @@
                                             required="{Boolean}true"
                                             value="For the fund '{{{fund}}}', review the data attached and as a financial professional trying to interest investors, write an overview of it's current position and performance.  Limit it to 150 words.  Data: {{{data}}}"
                                             name="./summaryPrompt"/>
+                                    <recapPrompt
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                            fieldLabel="Market Recap Prompt"
+                                            cq:showOnCreate="{Boolean}true"
+                                            required="{Boolean}true"
+                                            value="Write a Q3 (July-Sept) 2024 market recap article in the tone of Invesco for how {{{fund}}} Performed relative to S\&amp;P 500 and overall financial market for a user/reader not very versed in finance."
+                                            name="./recapPrompt"/>
+
                                 </items>
                             </column>
                         </items>

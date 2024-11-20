@@ -2,7 +2,6 @@ package com.invesco.core;
 
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.wcm.core.components.models.Text;
-import com.fasterxml.jackson.databind.JsonNode;
 import com.github.mustachejava.DefaultMustacheFactory;
 import com.github.mustachejava.Mustache;
 import com.github.mustachejava.MustacheFactory;
@@ -25,11 +24,11 @@ import static java.util.Objects.requireNonNull;
 import static org.apache.commons.lang3.StringUtils.isEmpty;
 
 @Model(adaptables = SlingHttpServletRequest.class,
-    adapters = { FundSummaryComponent.class, ComponentExporter.class},
-    resourceType = FundSummaryComponent.RESOURCE_TYPE,
-    defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
-public class FundSummaryComponent implements Text {
-    public static final String RESOURCE_TYPE = "invesco_ai/components/fundsummary";
+        adapters = { MarketRecapComponent.class, ComponentExporter.class},
+        resourceType = MarketRecapComponent.RESOURCE_TYPE,
+        defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+public class MarketRecapComponent implements Text {
+    public static final String RESOURCE_TYPE = "invesco_ai/components/marketrecap";
     private static final MustacheFactory mf = new DefaultMustacheFactory();
 
     @Inject
@@ -42,11 +41,8 @@ public class FundSummaryComponent implements Text {
     @OSGiService
     OpenAiService openAiService;
 
-    @OSGiService
-    FundDataService fundDataService;
-
     @ResourceValueFromPageProperty
-    String summaryPrompt;
+    String recapPrompt;
 
     @ResourceValueFromPageProperty
     String fundTicker;
@@ -55,9 +51,8 @@ public class FundSummaryComponent implements Text {
     public String getText() {
         String text = delegate.getText();
         if (isEmpty(text)) {
-            JsonNode fundData = fundDataService.fundData(fundTicker);
-            Map<String, Object> tokens = Map.of("fund", fundTicker, "data", fundData.toString());
-            Mustache mustache = mf.compile(new StringReader(summaryPrompt), null);
+            Map<String, Object> tokens = Map.of("fund", fundTicker);
+            Mustache mustache = mf.compile(new StringReader(recapPrompt), null);
 
             StringWriter writer = new StringWriter();
             mustache.execute(writer, tokens);
@@ -71,7 +66,6 @@ public class FundSummaryComponent implements Text {
             } catch (PersistenceException e) {
                 throw new RuntimeException(e);
             }
-
         }
 
         return text;
