@@ -29,6 +29,10 @@ body {
   display: none;
 }
 
+.languagenavigation, #navigation-3bb383b53d {
+  display: none !important;
+}
+
 /* Navbar styles */
 .invesco-nav {
   display: flex;
@@ -124,6 +128,7 @@ body {
       }
     }
   }
+
 
   /* Button */
   .nav-button {
