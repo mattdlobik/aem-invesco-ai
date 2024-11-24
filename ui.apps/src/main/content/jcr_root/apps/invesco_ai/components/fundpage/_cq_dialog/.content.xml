@@ -18,6 +18,27 @@
                     sling:resourceType="granite/ui/components/coral/foundation/tabs"
                     size="L">
                 <items jcr:primaryType="nt:unstructured">
+                    <tone
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="Tone"
+                            sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <tone
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                            fieldLabel="Fund Ticker"
+                                            cq:showOnCreate="{Boolean}true"
+                                            required="{Boolean}true"
+                                            name="./tone"/>
+                                </items>
+                            </column>
+                        </items>
+                    </tone>
+
                     <fund
                             jcr:primaryType="nt:unstructured"
                             jcr:title="Fund"
@@ -48,13 +69,14 @@
                                             fieldLabel="Market Recap Prompt"
                                             cq:showOnCreate="{Boolean}true"
                                             required="{Boolean}true"
-                                            value="Write a Q3 (July-Sept) 2024 market recap article in the tone of Invesco for how {{{fund}}} Performed relative to S\&amp;P 500 and overall financial market for a user/reader not very versed in finance."
+                                            value="Write a Q3 (July-Sept) 2024 market recap article in the tone of Invesco for how {{{fund}}} Performed relative to S\&amp;P 500 and overall financial market for a user/reader not very versed in finance.  Limit to 300 words."
                                             name="./recapPrompt"/>
 
                                 </items>
                             </column>
                         </items>
                     </fund>
+
                 </items>
             </tabs>
         </items>

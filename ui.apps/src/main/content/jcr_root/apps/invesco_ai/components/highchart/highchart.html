@@ -15,7 +15,10 @@
 </head>
 <body>
 <!-- Container for Highcharts -->
-<div id="highchart-container" class="highchart-container"></div>
+<div id="highchart-container" class="highchart-container"
+     data-sly-use.model="com.invesco.core.MarketRecapComponent"
+     data-chart-data="${model.fundData}"
+></div>
 
 <script>
     (function() {

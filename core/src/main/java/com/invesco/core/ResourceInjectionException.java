@@ -1,4 +1,4 @@
-package com.invesco.core.models;
+package com.invesco.core;
 
 public class ResourceInjectionException extends RuntimeException {
     private static final String MSG_DEFAULT = "ResourceInjectionException occurred while processing the following: ";

@@ -1,4 +1,4 @@
-package com.invesco.core.models;
+package com.invesco.core;
 
 import org.apache.sling.models.annotations.Source;
 import org.apache.sling.models.annotations.injectorspecific.InjectionStrategy;
@@ -13,15 +13,12 @@ import static org.apache.commons.lang3.StringUtils.EMPTY;
 
 @Target({ElementType.FIELD, ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
-@InjectAnnotation @Source(ResourceValueFromPagePropertyInjector.NAME)
-public @interface ResourceValueFromPageProperty {
+@InjectAnnotation
+@Source(PagePropertyInjector.NAME)
+public @interface PageProperty {
 
     String name() default EMPTY;
-    String prefix() default EMPTY;
     String format() default EMPTY;
-
-    String pagePropertyName() default EMPTY;
-    String pagePropertyPrefix() default EMPTY;
 
     InjectionStrategy injectionStrategy() default InjectionStrategy.OPTIONAL;
 }

@@ -30,8 +30,8 @@ public class OpenAiService {
         this.config = config;
     }
 
-    ChatGptResponse completion(String prompt) {
-        ChatGptRequest gptRequest = new ChatGptRequest(prompt, MODEL, "user");
+    ChatGptResponse completion(String tone, String prompt) {
+        ChatGptRequest gptRequest = new ChatGptRequest(tone, prompt, MODEL, "user");
 
         ChatGptResponse gptResponse;
         try {

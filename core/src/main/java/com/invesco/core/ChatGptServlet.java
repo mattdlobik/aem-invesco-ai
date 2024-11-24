@@ -49,7 +49,7 @@ public class ChatGptServlet extends SlingAllMethodsServlet {
         StringWriter writer = new StringWriter();
         mustache.execute(writer, tokens);
 
-        ChatGptResponse gptResponse = openAi.completion(writer.toString());
+        ChatGptResponse gptResponse = openAi.completion(submission.getTone(), writer.toString());
         String responseContent = gptResponse.getChoices().get(0).getMessage().getContent();
 
         response.addHeader("Content-Type", "text/plain");
@@ -59,8 +59,9 @@ public class ChatGptServlet extends SlingAllMethodsServlet {
 
     @Data
     static class Submission {
-        private String prompt;
+        private String tone;
         private String fund;
+        private String prompt;
     }
 
 }
