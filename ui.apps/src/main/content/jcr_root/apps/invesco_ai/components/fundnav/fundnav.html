@@ -4,8 +4,8 @@
 
 <div class="invesco-nav">
     <div class="logo">
-        <img src="/content/dam/invesco_ai/QQQ.png" alt="Invesco QQQ Logo" class="logo-img"/>
-        <span></span> <!-- If you have logo text, you can include it here -->
+        <img src="/content/dam/invesco_ai/invesco.png" alt="Invesco QQQ Logo" class="logo-img"/>
+        <div class="logo-ticker">${pageProperties.fundTicker @ context='html'}</div>
     </div>
 
     <div class="nav-links">
@@ -28,7 +28,7 @@
 
     <div class="nav-button">
         <a href="${properties.buttonLink}" class="btn-primary">
-            Invest In QQQ
+            Invest In ${pageProperties.fundTicker @ context='html'}
         </a>
     </div>
 </div>
