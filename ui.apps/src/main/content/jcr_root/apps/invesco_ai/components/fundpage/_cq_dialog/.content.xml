@@ -61,7 +61,7 @@
                                             fieldLabel="Summary Prompt"
                                             cq:showOnCreate="{Boolean}true"
                                             required="{Boolean}true"
-                                            value="For the fund '{{{fund}}}', review the data attached and as a financial professional trying to interest investors, write an overview of it's current position and performance.  Limit it to 150 words.  Data: {{{data}}}"
+                                            value="For the fund '{{{fundTicker}}}', review the data attached and as a financial professional trying to interest investors, write an overview of it's current position and performance.  Limit it to 150 words.  Data: {{{fundData}}}"
                                             name="./summaryPrompt"/>
                                     <recapPrompt
                                             jcr:primaryType="nt:unstructured"
@@ -69,7 +69,7 @@
                                             fieldLabel="Market Recap Prompt"
                                             cq:showOnCreate="{Boolean}true"
                                             required="{Boolean}true"
-                                            value="Write a Q3 (July-Sept) 2024 market recap article in the tone of Invesco for how {{{fund}}} Performed relative to S\&amp;P 500 and overall financial market for a user/reader not very versed in finance.  Limit to 300 words."
+                                            value="Write a Q3 (July-Sept) 2024 market recap article in the tone of Invesco for how {{{fundTicker}}} Performed relative to S\&amp;P 500 and overall financial market for a user/reader not very versed in finance.  Limit to 300 words."
                                             name="./recapPrompt"/>
 
                                 </items>

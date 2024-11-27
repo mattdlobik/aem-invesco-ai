@@ -1,110 +1,141 @@
 (function($, Granite) {
     "use strict";
 
-    // $(document).on("dialog-loaded", function(e) {
-    //     var $dialog = e.dialog;
-    //     var $dialogContent = $dialog.find(dialogContentSelector);
-    //     var dialogContent = $dialogContent.length > 0 ? $dialogContent[0] : undefined;
-    //
-    //     if (dialogContent) {
-    //         var $descriptionTextfield = $(descriptionTextfieldSelector);
-    //         if ($descriptionTextfield.length) {
-    //             if (!$descriptionTextfield[0].hasAttribute("aria-labelledby")) {
-    //                 associateDescriptionTextFieldWithLabel($descriptionTextfield[0]);
-    //             }
-    //             var rteInstance = $descriptionTextfield.data("rteinstance");
-    //             // wait for the description textfield rich text editor to signal start before initializing.
-    //             // Ensures that any state adjustments made here will not be overridden.
-    //             if (rteInstance && rteInstance.isActive) {
-    //                 init(e, $dialog, $dialogContent, dialogContent);
-    //             } else {
-    //                 $descriptionTextfield.on("editing-start", function() {
-    //                     init(e, $dialog, $dialogContent, dialogContent);
-    //                 });
-    //             }
-    //         } else {
-    //             // init without description field
-    //             init(e, $dialog, $dialogContent, dialogContent);
-    //         }
-    //         manageTitleTypeSelectDropdownFieldVisibility(dialogContent);
-    //     }
-    // });
-    // Listen for multiple dialog events
-    $(document).on('dialog-loaded coral-overlay:open dialog-ready foundation-contentloaded foundation-form-loaded', function(e) {
-        let url = Granite.author.page.path;
-        console.log("URL! ", url);
-        console.log('Event triggered:', e.type);
+    // Function to handle both initial page load and component generation
+    function handleGeneration(promptTemplate, fundTicker) {
+        console.log('Making API request with:', {
+            'Prompt Template': promptTemplate,
+            'Fund Ticker': fundTicker
+        });
 
-        let button = document.querySelector('.text-generator-button');
-        if (button) {
-            // Remove any existing click handlers
-            // button.removeEventListener('click', handleClick);
-
-            // Add click handler
-            button.addEventListener('click', handleClick);
-        // } else {
-        //     console.log('Button not found');
-        }
-    });
-
-    function handleClick(e) {
-        e.preventDefault();
-        console.log('Button clicked');
-
-        debugger;
-        let form = e.target.closest('form');
-        // let text = form.querySelector('[name="./text"]')
-        let promptTemplate = form.querySelector('[name="./summaryPrompt"]').value;
-        // let fundTicker = form.querySelector('[name="./fundTicker"]').value;
-        // let tone = form.querySelector('[name="./tone"]').value;
-
-        // Fetch to backend
-        fetch('/bin/openai', {
+        return fetch('/bin/openai', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                prompt: promptTemplate
-                // fund: fundTicker,
-                // tone: tone
+                prompt: promptTemplate,
+                fund: fundTicker
             })
         })
             .then(response => response.text())
-            .then((body) => {
-                text.value = body;
-            })
             .catch(error => {
-                alert('Failed to hit backend');
                 console.error('Error:', error);
+                alert('Failed to generate text. Please try again.');
             });
     }
 
-    // function retrievePageInfo(dialogContent) {
-    //     var url;
-    //     if (actionsEnabled) {
-    //         url = dialogContent.find('.cmp-teaser__editor-multifield_actions [data-cmp-teaser-v1-dialog-edit-hook="actionLink"]').val();
-    //     } else {
-    //         url = linkURL;
-    //     }
-    //     // get the info from the current page in case no link is provided.
-    //     if (url === undefined && (Granite.author && Granite.author.page)) {
-    //         url = Granite.author.page.path;
-    //     }
-    //     if (url && url.startsWith("/")) {
-    //         return $.ajax({
-    //             url: url + "/_jcr_content.json"
-    //         }).done(function(data) {
-    //             if (data) {
-    //                 titleTuple.seedTextValue(data["jcr:title"]);
-    //                 titleTuple.update();
-    //                 descriptionTuple.seedTextValue(data["jcr:description"]);
-    //                 descriptionTuple.update();
-    //             }
-    //         });
-    //     } else {
-    //         titleTuple.update();
-    //         descriptionTuple.update();
-    //     }
-    // }
-})();
+    function handleClick(e) {
+        e.preventDefault();
+        console.log('----------------------------------------');
+        console.log('Generate button clicked');
+
+        let form = e.target.closest('form');
+        let visibleTextField = form.querySelector('.coral-RichText-editable');
+
+        // Detect which prompt field exists
+        let promptField = form.querySelector('[name="./summaryPrompt"]') ||
+            form.querySelector('[name="./recapPrompt"]');
+        let promptValue = promptField?.value;
+        let promptType = promptField?.name === './summaryPrompt' ? 'summary' : 'recap';
+
+        console.log('Fields found:', {
+            'Visible text field': !!visibleTextField,
+            'Prompt type': promptType,
+            'Prompt value': promptValue
+        });
+
+        let pagePath = Granite.author.page.path;
+        console.log('Current page path:', pagePath);
+
+        // Get the page properties to get the fund ticker
+        $.ajax({
+            url: pagePath + "/jcr:content.json",
+            method: "GET"
+        }).done(function(pageData) {
+            const fundTicker = pageData.fundTicker;
+
+            handleGeneration(promptValue, fundTicker)
+                .then((body) => {
+                    console.log('API Response:', body);
+
+                    if (visibleTextField) {
+                        visibleTextField.innerHTML = body;
+                        $(visibleTextField).trigger('input');
+                    }
+
+                    let textInput = form.querySelector('[name="./text"]');
+                    if (textInput) {
+                        textInput.value = body;
+                        $(textInput).trigger('change');
+                    }
+
+                    let doneButton = document.querySelector('coral-dialog-footer .cq-dialog-submit');
+                    if (doneButton && !doneButton._hasClickHandler) {
+                        doneButton._hasClickHandler = true;
+                        doneButton.addEventListener('click', function() {
+                            setTimeout(() => {
+                                const editable = Granite.author.editor.dom.find(pagePath)[0];
+                                if (editable) {
+                                    Granite.author.editor.reload(editable);
+                                }
+                            }, 500);
+                        });
+                    }
+
+                    console.log('Update complete');
+                    console.log('----------------------------------------');
+                });
+        }).fail(function(jqXHR, textStatus, errorThrown) {
+            console.error('Failed to get page properties:', {
+                status: textStatus,
+                error: errorThrown
+            });
+        });
+    }
+
+    // Function to handle initial page content generation
+    function handlePageLoad() {
+        let url = Granite.author.page.path;
+        console.log("Page load - URL:", url);
+
+        // Get the page properties
+        $.ajax({
+            url: url + "/jcr:content.json",
+            method: "GET"
+        }).done(function(pageData) {
+            const fundTicker = pageData.fundTicker;
+            const summaryPrompt = pageData.summaryPrompt;
+            const recapPrompt = pageData.recapPrompt;
+
+            // Generate content for both summary and recap if prompts exist
+            if (summaryPrompt) {
+                handleGeneration(summaryPrompt, fundTicker);
+            }
+            if (recapPrompt) {
+                handleGeneration(recapPrompt, fundTicker);
+            }
+        });
+    }
+
+    function initButton() {
+        let button = document.querySelector('.text-generator-button');
+        if (button) {
+            button.removeEventListener('click', handleClick);
+            button.addEventListener('click', handleClick);
+            console.log('Button initialized');
+        }
+    }
+
+    // Listen for events and handle both page load and component interactions
+    $(document).on('dialog-loaded coral-overlay:open dialog-ready foundation-contentloaded foundation-form-loaded', function(e) {
+        console.log('Event triggered:', e.type);
+
+        if (e.type === 'foundation-contentloaded') {
+            handlePageLoad();
+        }
+
+        setTimeout(initButton, 100);
+    });
+
+})(jQuery, Granite);
