@@ -2,7 +2,7 @@
     "use strict";
 
     // Function to handle both initial page load and component generation
-    function handleGeneration(promptTemplate, fundTicker) {
+    function handleGeneration(promptTemplate, fundTicker, tone) {
         console.log('Making API request with:', {
             'Prompt Template': promptTemplate,
             'Fund Ticker': fundTicker
@@ -14,8 +14,9 @@
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                prompt: promptTemplate,
-                fund: fundTicker
+                promptTemplate: promptTemplate,
+                fundTicker: fundTicker,
+                tone: tone
             })
         })
             .then(response => response.text())
@@ -55,7 +56,7 @@
         }).done(function(pageData) {
             const fundTicker = pageData.fundTicker;
 
-            handleGeneration(promptValue, fundTicker)
+            handleGeneration(promptValue, fundTicker, tone)
                 .then((body) => {
                     console.log('API Response:', body);
 
@@ -105,15 +106,16 @@
             method: "GET"
         }).done(function(pageData) {
             const fundTicker = pageData.fundTicker;
+            const tone = pageData.tone;
             const summaryPrompt = pageData.summaryPrompt;
             const recapPrompt = pageData.recapPrompt;
 
             // Generate content for both summary and recap if prompts exist
             if (summaryPrompt) {
-                handleGeneration(summaryPrompt, fundTicker);
+                handleGeneration(summaryPrompt, fundTicker, tone);
             }
             if (recapPrompt) {
-                handleGeneration(recapPrompt, fundTicker);
+                handleGeneration(recapPrompt, fundTicker, tone);
             }
         });
     }
