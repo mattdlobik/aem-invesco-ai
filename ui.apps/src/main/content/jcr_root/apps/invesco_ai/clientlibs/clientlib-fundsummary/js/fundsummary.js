@@ -80,7 +80,7 @@
                                 if (editable) {
                                     Granite.author.editor.reload(editable);
                                 }
-                            }, 500);
+                            }, 1000);
                         });
                     }
 
@@ -137,7 +137,7 @@
             handlePageLoad();
         }
 
-        setTimeout(initButton, 100);
+        setTimeout(initButton, 1000);
     });
 
 })(jQuery, Granite);
