@@ -41,10 +41,10 @@ public class ChatGptServlet extends SlingAllMethodsServlet {
 
         Submission submission = jackson.readValue(request.getReader(), Submission.class);
 
-        JsonNode data = fundData.fundData(submission.getFundTicker());
+        JsonNode data = fundData.fundData(submission.getFund());
 
-        Map<String, Object> tokens = Map.of("fundTicker", submission.getFundTicker(), "fundData", data.toString());
-        Mustache mustache = mf.compile(new StringReader(submission.getPromptTemplate()), null);
+        Map<String, Object> tokens = Map.of("fund", submission.getFund(), "data", data.toString());
+        Mustache mustache = mf.compile(new StringReader(submission.getPrompt()), null);
 
         StringWriter writer = new StringWriter();
         mustache.execute(writer, tokens);
@@ -60,8 +60,8 @@ public class ChatGptServlet extends SlingAllMethodsServlet {
     @Data
     static class Submission {
         private String tone;
-        private String fundTicker;
-        private String promptTemplate;
+        private String fund;
+        private String prompt;
     }
 
 }

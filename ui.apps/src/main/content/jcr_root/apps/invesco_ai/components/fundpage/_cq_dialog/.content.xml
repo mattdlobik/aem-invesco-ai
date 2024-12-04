@@ -30,9 +30,10 @@
                                     <tone
                                             jcr:primaryType="nt:unstructured"
                                             sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
-                                            fieldLabel="Fund Ticker"
+                                            fieldLabel="Tone"
                                             cq:showOnCreate="{Boolean}true"
                                             required="{Boolean}true"
+                                            value="Write in the tone of Invesco.com"
                                             name="./tone"/>
                                 </items>
                             </column>
